@@ -1,423 +1,600 @@
-# GT Recipe Display Spec — Schema
+# GT Recipe Display Spec v2
 
-> 字典文件按语言拆分（zh_CN.json / en_US.json / ...），后端通过 `dataset.displaySpecPath` 告诉前端哪个 dataset 用哪份 spec。前端启动时 GET 拉一次缓存，按 `recipe.handler` 取 lines，跑解析器输出 `DisplayItem[]`。
+This document is the source-of-truth contract for GregTech recipe metadata
+display specs.
 
-## 文件结构
+The v2 design splits display behavior into:
+
+- language-neutral rules: `spec/display.json`
+- locale messages: `spec/i18n/<locale>.json`
+
+The frontend loads both files for the active dataset, merges the locale messages
+into `vue-i18n`, then renders `DisplayItem[]`. Components receive final text;
+they do not know about spec keys.
+
+## Resource Files
+
+Source files:
+
+- `spec/display.json`
+- `spec/i18n/zh_CN.json`
+
+Exported files served by Vite/nginx:
+
+- `exports/gtnh/2.8.4/official/spec/display.json`
+- `exports/gtnh/2.8.4/official/spec/i18n/zh_CN.json`
+
+Backend `DatasetSummary` must return both URLs:
 
 ```json
 {
-  "version": 1,
-  "language": "zh_CN",
+  "displaySpecUrl": "/assets/gtnh/2.8.4/official/spec/display.json",
+  "displaySpecMessagesUrl": "/assets/gtnh/2.8.4/official/spec/i18n/zh_CN.json"
+}
+```
+
+First-stage locale support only ships `zh_CN`. The `zh_CN` file contains all
+current visible text, including text that is currently English.
+
+## Top-Level Shape
+
+`display.json`:
+
+```json
+{
+  "schema": "gregtech-display-spec",
+  "version": 2,
   "tables": {
-    "<table_name>": { "<key>": "<value>", ... }
+    "table_name": {
+      "raw_value": "spec.gregtech.table.table_name.rawValue"
+    }
   },
   "handlers": {
-    "<handler_id>": {
-      "name_cn": "<注释，人类可读，不参与渲染>",
-      "lines": [ { ...line... }, ... ]
+    "macerator": {
+      "nameKey": "spec.gregtech.handler.macerator.name",
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 5228,
+      "lines": []
     }
   }
 }
 ```
 
-- `version`: schema 版本号。本文档为 v1
-- `language`: BCP 47 风格的 dataset 语言标识；用于校验
-- `tables`: 共享映射表（材料名 / tier 名 / spacetime fancy name 等）。所有 handler 都能引用，避免在每段 spec 里重复
-- `handlers`: 按 DB 实际出现的 handler id（`split_part(recipe_id, ':', 2)`）一段独立 lines
+Fields:
 
-**handler 必须和 DB 一一对得上**。DB 有但 spec 没列的 handler，前端日志 `[displaySpec] no spec for handler={id}`，displayItems 返回空数组（不糊弄）。
+- `schema`: required. Must be exactly `gregtech-display-spec`.
+- `version`: required. Must be `2`.
+- `tables`: required object. Shared lookup tables. Values are i18n keys.
+- `handlers`: required object. Keyed by GregTech handler short name.
 
----
+The handler short name is the recipe category without the `gregtech:` prefix.
+For example, category `gregtech:macerator` maps to handler key `macerator`.
 
-## ctx：解析器读到的数据
+## Handler Spec
 
-前端解析器拿到一条 recipe 后，先把所有 DB 字段读进 ctx，line 通过 `kind` 决定取哪段：
-
-```ts
-type RecipeCtx = {
-  // 顶层
-  handler: string,
-  recipe_kind: 'PROCESSING' | 'FUEL',
-  voltage: number | null,
-  voltage_tier: string | null,    // "ULV"/"LV"/.../"MAX"
-  amperage: number | null,
-  duration_ticks: number,
-  special_value: number | null,
-  // 流体 / 物品输入（部分 handler 用）
-  fluid_inputs: Array<{ amount: number, fluid_id: string }>,
-  item_inputs: Array<{ item_id: string, amount: number }>,
-  // 特殊物品（specialItems）
-  special_items: Array<{ item_id: string }>,
-  // metadata（所有 key 全读进来）
-  metadata: Record<string, ScalarOrJson>,
-}
-```
-
----
-
-## line — 一行的形状
-
-```typescript
-type Line = {
-  // ─── 必填 ───
-  kind: LineKind,                  // 决定取数据的方式（详见下）
-
-  // ─── 取数据相关 ───
-  key?: string,                    // kind=metadata/flag/particle_icon 时：metadata.{key}
-  list_index?: number,             // kind=special_item / fluid_input 时数组下标，默认 0
-
-  // ─── 渲染相关 ───
-  label?: string | null,           // 行 label；null 表示无 label（整行就是 value）
-  expr?: string,                   // 可选 JS 表达式（expr-eval 沙箱），输入 value/tables，输出新 value
-  scale?: number,                  // 数值乘法（在 format 之前），常用 1000 (keV→eV) / 365 (days→mc_days)
-  format?: FormatName,             // 数值→字符串格式化
-  prefix?: string,                 // 字面拼前缀
-  suffix?: string,                 // 字面拼后缀（如 " EU" / " K"）
-  suffix_table?: string,           // 引用 tables.{name}，默认按 raw value 当 key 查
-  suffix_table_lookup?: 'exact' | 'ceil', // exact 默认；ceil 取最小 table_key >= raw value
-  suffix_table_format?: string,    // 查表后套模板（{0} 占位），如 " ({0})"
-  literal?: string,                // kind=flag/text 时输出的字面文字
-  color_code?: string,             // 颜色码前缀（如 "§9§n§l"）
-
-  // ─── 显示条件 ───
-  show_if_true?: boolean,          // value 为 true 才显示（bool 字段用）
-  show_if_present?: boolean,       // metadata 不存在时整行不显示（默认 true）
-  show_if?: string,                // expr 返回 true 才显示，否则跳过
-};
-```
-
----
-
-## LineKind — 11 种处理类型
-
-每种 kind 决定**从 ctx 取什么数据**，取出来后统一进入"格式化 + 拼接"流程。
-
-### 顶层派生
-
-| kind | 取什么 | 输出几行 |
-|---|---|---|
-| `total_eu` | `voltage × duration_ticks × amperage` | 1 行（除非 voltage 为 null） |
-| `voltage_block` | `voltage / voltage_tier / amperage` | amp=1 → 1 行；amp>1 → 3 行（使用 / 电压 / 电流） |
-| `duration` | `duration_ticks` | 1 行（按 unit 转秒/tick/天） |
-| `fuel_heat` | `special_value`（× scale，常配 1000） | 1 行 |
-| `large_boiler_table` | `special_value` 走大锅炉公式 | 4 行（青铜/钢/钛/钨钢） |
-
-### Metadata 派生
-
-| kind | 取什么 | 备注 |
-|---|---|---|
-| `metadata` | `metadata[key]` 标量 | 数值 / 字符串 / 枚举均可；缺失则整行跳过 |
-| `metadata_json` | `metadata[key]` 整个 JSON 对象（绑定到 expr 的 value） | 必须配 `expr`，由 expr 决定怎么取多字段并组合 |
-| `flag` | `metadata[key]` 必须是 bool | 配 `show_if_true: true` + `literal: "需要超净间"`；false 或缺失跳过 |
-
-### 特殊行
-
-| kind | 取什么 | 备注 |
-|---|---|---|
-| `text` | 不取数据 | 纯 hardcode 提示，配 `literal: "进一步促进产出"` |
-| `special_item` | `special_items[list_index]` | 用 itemId 渲染图标（前端组件，不是文字） |
-| `fluid_input` | `fluid_inputs[list_index]` | 取 `.amount` 当 value |
-
----
-
-## FormatName — 数值格式化
-
-每个 format 名对应前端一个**纯函数**，输入 value（已经被 expr/scale 处理过），输出字符串。
-
-| format | 输入 | 输出 |
-|---|---|---|
-| `direct` | any | `String(value)` |
-| `comma_int` | int/long | `"4,501"`（千分位） |
-| `comma_long` | long | `"1,000,000,000"` |
-| `comma_double_1` | double | 千分位 + 一位小数 |
-| `percent_int_x100` | int | `"55%"`（已是百分数，不乘 100） |
-| `percent_double_x100` | double 0..1 | `"55%"`（×100 后整数） |
-| `decimal_0` | double | `"55"`（去小数） |
-| `decimal_1` | double | `"55.5"` |
-| `decimal_2` | double | `"55.55"` |
-| `scientific` | double | `"5.12e-02"` |
-| `duration_seconds` | int ticks | `"160 秒"`（带"秒"单位；ticks % 20 == 0 整数否则一位小数） |
-| `duration_seconds_en` | int ticks | `"160 secs"`（英文） |
-| `duration_ticks` | int | `"5 tick"` / `"5 ticks"` |
-| `duration_auto_unit` | double seconds | 自动选秒/分/时/天单位（isotopedecay 用） |
-| `java_double` | number | 模拟 Java `Double.toString` 的展示；整数保留 `.0`，必要时用 `E` 科学计数法 |
-| `bool_yes_no` | bool | `"Yes"` / `"No"` |
-| `bool_yes_no_cn` | bool | `"是"` / `"否"` |
-
-新增 format 必须在前端 displaySpec.ts 里加一个函数；不在表里的 format 名加载时报错。
-
----
-
-## tables — 共享映射表
+Handler object:
 
 ```json
 {
-  "tables": {
-    "tier_name": {
-      "0": "ULV", "1": "LV", "2": "MV", "3": "HV", "4": "EV", "5": "IV",
-      "6": "LuV", "7": "ZPM", "8": "UV", "9": "UHV", "10": "UEV",
-      "11": "UIV", "12": "UMV", "13": "UXV", "14": "MAX"
-    },
-    "coil_material": {
-      "1801": "白铜", "2701": "坎塔尔合金", "3601": "镍铬合金",
-      "4501": "钛铂钒", "5401": "高速钢-G", "6301": "高速钢-S",
-      "7201": "硅岩", "8101": "硅岩合金", "9001": "三元金属",
-      "9901": "通流琥珀金", "10801": "觉醒龙锭", "11701": "无尽",
-      "12601": "海珀珍", "13501": "永恒", "*": "永恒+"
-    },
-    "chemplant_casing": {
-      "0": "青铜", "1": "钢", "2": "不锈钢", "3": "铝",
-      "4": "钛", "5": "钨钢", "6": "劳伦姆合金", "7": "铱"
-    },
-    "eoh_spacetime_fancy": {
-      "0": "Schwarzschild", "1": "Reissner-Nordström", "2": "Kerr",
-      "3": "Kerr-Newman", "4": "Lense-Thirring", "5": "Tipler",
-      "6": "Alcubierre", "7": "van Stockum", "8": "Gallifreyan"
+  "nameKey": "spec.gregtech.handler.<handler>.name",
+  "recipe_kind": "PROCESSING",
+  "recipe_count": 1,
+  "lines": []
+}
+```
+
+Fields:
+
+- `nameKey`: optional i18n key for handler display name.
+- `recipe_kind`: optional documentation/debug field. Current values are
+  `PROCESSING` or `FUEL`.
+- `recipe_count`: optional documentation/debug field copied from current data.
+- `lines`: required array of line specs. Rendered in order.
+
+`name_cn` is not valid in v2.
+
+## Runtime Context
+
+Each recipe is converted to a runtime context before rendering:
+
+```ts
+interface RecipeCtx {
+  handler: string
+  recipe_kind: 'PROCESSING' | 'FUEL'
+  voltage: number | null
+  voltage_tier: string | null
+  amperage: number | null
+  duration_ticks: number
+  special_value: number | null
+  fluid_inputs: Array<{ amount: number; fluid_id: string }>
+  item_inputs: Array<{ item_id: string; amount: number }>
+  special_items: GregTechSpecialItem[]
+  metadata: Record<string, unknown>
+}
+```
+
+Expression fields can access `ctx`, `tables`, and the current raw `value`.
+
+## Line Spec
+
+Common line object:
+
+```json
+{
+  "kind": "metadata",
+  "key": "some_metadata_key",
+  "labelKey": "spec.gregtech.handler.example.line.someMetadata.label",
+  "expr": "comma(value)",
+  "format": "comma_int",
+  "prefixKey": "spec.gregtech.prefix.example",
+  "suffixKey": "spec.gregtech.suffix.example",
+  "show_if_present": true,
+  "show_if_true": false,
+  "show_if": "value > 0",
+  "color_code": "GOLD"
+}
+```
+
+All possible fields:
+
+- `kind`: required. Determines where the raw value comes from.
+- `key`: metadata key for `metadata`, `metadata_json`, and `flag`.
+- `list_index`: zero-based index for `special_item` and `fluid_input`.
+- `field`: `RecipeCtx` field name for `top_field`.
+- `labelKey`: i18n key for the label. `null` or missing means no label.
+- `expr`: expression that transforms the raw value.
+- `valueKeyExpr`: expression that returns an i18n key or raw display value.
+- `scale`: numeric multiplier applied after `expr` or before `format`.
+- `format`: named formatter.
+- `prefixKey`: i18n key prepended to the rendered value.
+- `suffixKey`: i18n key appended to the rendered value.
+- `suffix_table`: table name in top-level `tables`.
+- `suffix_table_lookup`: lookup mode for `suffix_table`. Values: `exact`,
+  `ceil`.
+- `suffixTableFormatKey`: i18n template used after suffix-table lookup. The
+  selected table text replaces `{0}`.
+- `literalKey`: i18n key used by text-like lines.
+- `valueTemplateKey`: i18n template applied around the rendered value.
+- `templateArgs`: named expression map passed to `valueTemplateKey`.
+- `color_code`: optional color code forwarded to the display item.
+- `show_if_true`: if `true`, render only when raw value is exactly `true`.
+- `show_if_present`: defaults to enabled. When enabled, missing/null raw values
+  are skipped. Set to `false` only when a line must render for null.
+- `show_if`: expression condition. Falsey result skips the line.
+- `single`: single-voltage segment for `voltage_block`.
+- `split`: split-voltage segments for `voltage_block`.
+
+## Line Kinds
+
+`total_eu`
+
+- Raw value: `ctx.voltage * ctx.duration_ticks * ctx.amperage`.
+- Skips when `ctx.voltage` or `ctx.amperage` is null.
+- Usually formatted with `comma_long`.
+
+`voltage_block`
+
+- Special renderer. Does not use the normal raw-value pipeline.
+- Uses `single` when recipe amperage is 1 or missing.
+- Uses `split` when `ctx.amperage > 1`.
+- If only `split` exists, `split` is always used.
+- Skips when `ctx.voltage` is null.
+
+`duration`
+
+- Raw value: `ctx.duration_ticks`.
+- Skips when ticks are `<= 0`.
+- Usually formatted with `duration_seconds` or `duration_ticks`.
+
+`fuel_heat`
+
+- Raw value: `ctx.special_value`.
+- Skips when `special_value` is null.
+
+`large_boiler_table`
+
+- Special renderer for large boiler fuel burn time.
+- Uses `ctx.special_value / 40` as base.
+- Emits fixed rows using i18n labels:
+  `spec.gregtech.largeBoiler.header`,
+  `spec.gregtech.largeBoiler.bronze`,
+  `spec.gregtech.largeBoiler.steel`,
+  `spec.gregtech.largeBoiler.titanium`,
+  `spec.gregtech.largeBoiler.tungstensteel`.
+- Uses `spec.gregtech.largeBoiler.disabled` when the computed cell is below
+  `0.05`.
+- Skips when `special_value` is null.
+
+`metadata`
+
+- Raw value: `ctx.metadata[key]`.
+- Returns null when the metadata key is absent, which normally skips the line.
+- Use for scalar metadata that should be formatted or transformed.
+
+`metadata_json`
+
+- Raw value: `ctx.metadata[key]`.
+- Same lookup behavior as `metadata`.
+- Intended for JSON metadata consumed by expressions.
+
+`flag`
+
+- Raw value: `ctx.metadata[key]`.
+- Usually combined with `show_if_true: true` and `literalKey`.
+
+`text`
+
+- Raw value: empty string.
+- Use `literalKey` or `valueTemplateKey`.
+- Does not depend on recipe data.
+
+`special_item`
+
+- Raw value: `ctx.special_items[list_index ?? 0]?.itemVariantId`.
+- Returns null if the item does not exist.
+
+`fluid_input`
+
+- Raw value: `ctx.fluid_inputs[list_index ?? 0]`.
+- Returns null if the fluid input does not exist.
+- Expressions can read `value.amount` and `value.fluid_id`.
+
+`top_field`
+
+- Raw value: `ctx[field]`.
+- Returns null if the field does not exist.
+
+## Voltage Block Segment
+
+`single` and each entry of `split` use this shape:
+
+```json
+{
+  "labelKey": "spec.gregtech.handler.example.line.voltage.label",
+  "expr": "comma(ctx.voltage)",
+  "valueKeyExpr": "'spec.gregtech.some.key'",
+  "format": "comma_int",
+  "prefixKey": "spec.gregtech.prefix.example",
+  "suffixKey": "spec.gregtech.suffix.euPerTick",
+  "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+  "templateArgs": {
+    "tier": "ctx.voltage_tier"
+  }
+}
+```
+
+Fields:
+
+- `labelKey`: required i18n key.
+- `expr`: expression evaluated with `value = ctx.voltage`.
+- `valueKeyExpr`: expression returning an i18n key or raw display value.
+- `format`: named formatter applied to `expr` result.
+- `prefixKey`: translated prefix.
+- `suffixKey`: translated suffix.
+- `valueTemplateKey`: translated template applied to the segment value.
+- `templateArgs`: named expression map passed to the template.
+
+## Render Pipeline
+
+Normal lines render in this order:
+
+1. Read raw value according to `kind`.
+2. Skip if raw value is `undefined`.
+3. Skip null raw values unless `show_if_present` is `false`.
+4. If `show_if_true` is `true`, skip unless raw value is exactly `true`.
+5. If `show_if` exists, evaluate it with `{ value, ctx, tables }` and skip on
+   falsey result.
+6. Produce base value text:
+   - `valueKeyExpr`: evaluate and translate if it returns `spec.gregtech.*`.
+   - `expr`: evaluate, optionally apply `scale`, then apply `format` or
+     translate if the result is an i18n key.
+   - `literalKey`: translate the literal key.
+   - `format`: optionally apply `scale`, then format the raw value.
+   - fallback: `String(value)`.
+7. Apply `valueTemplateKey`, passing `{ value, raw, result, ...templateArgs }`.
+8. Apply `prefixKey` and `suffixKey`.
+9. Apply `suffix_table` and `suffixTableFormatKey`.
+10. Translate `labelKey` unless it is null/missing.
+11. Emit `{ label, value, colorCode }`.
+
+`valueTemplateKey` is the preferred way to handle locale-dependent word order.
+Do not concatenate natural-language fragments in `expr`.
+
+## Tables
+
+Top-level `tables` are language-neutral lookup tables:
+
+```json
+{
+  "coolant_type": {
+    "water": "spec.gregtech.table.coolantType.water",
+    "ic2coolant": "spec.gregtech.table.coolantType.ic2Coolant"
+  }
+}
+```
+
+Rules:
+
+- Table names are internal identifiers.
+- Table keys are raw recipe/metadata values.
+- Table values must be i18n keys.
+- `lookup(table, key)` in expressions returns the table value. If that value is
+  a `spec.gregtech.*` key, the renderer translates it.
+
+Suffix tables:
+
+```json
+{
+  "kind": "metadata",
+  "key": "heat",
+  "labelKey": "spec.gregtech.handler.example.line.heat.label",
+  "format": "comma_int",
+  "suffix_table": "coil_tier",
+  "suffix_table_lookup": "ceil",
+  "suffixTableFormatKey": "spec.gregtech.template.parenthesized"
+}
+```
+
+Lookup modes:
+
+- `exact`: uses `table[String(raw)]`.
+- `ceil`: treats numeric table keys as thresholds and chooses the smallest key
+  `>= raw`; falls back to `*` if no threshold matches.
+
+`suffixTableFormatKey` receives already translated table text through `{0}`.
+If it is missing, the default template is `{0}`.
+
+## Expression Language
+
+Expressions use `expr-eval`.
+
+Available bindings:
+
+- `value`: raw line value, or `ctx.voltage` for voltage-block segments.
+- `result`: only inside `templateArgs`; value after `expr` evaluation.
+- `ctx`: runtime recipe context.
+- `tables`: top-level lookup tables.
+
+`raw` is not an expression binding. It is passed to the final i18n message as a
+template parameter when `valueTemplateKey` is applied.
+
+String concatenation:
+
+- Use `||` for string concatenation.
+- Do not use `+` for strings; `+` remains numeric addition.
+
+Available helper functions:
+
+- `str(value)`: convert to string.
+- `int(value)`: truncate to integer.
+- `comma(value)`: integer thousands formatting.
+- `lookup(table, key)`: table lookup by stringified key.
+- `fixed1(value)`: one decimal place.
+- `tier(value)`: voltage tier name from EU/t.
+- `floor(value)`: `Math.floor`.
+- `ceil(value)`: `Math.ceil`.
+- `round(value)`: `Math.round`.
+- `tanh(value)`: `Math.tanh`.
+- `band(a, b)`: bitwise AND.
+- `bor(a, b)`: bitwise OR.
+- `shr(a, b)`: unsigned right shift.
+- `len(value)`: array length, or 0 for non-arrays.
+
+Expression examples:
+
+```json
+{
+  "expr": "comma(ctx.voltage * ctx.amperage)",
+  "valueTemplateKey": "spec.gregtech.template.euPerTickWithTier",
+  "templateArgs": {
+    "tier": "tier(ctx.voltage * ctx.amperage)"
+  }
+}
+```
+
+```json
+{
+  "valueKeyExpr": "lookup(tables.cleanroom_type, value)"
+}
+```
+
+## Formats
+
+Named formatters:
+
+- `direct`: `String(value)`.
+- `as_string`: `String(value)`.
+- `comma_int`: integer thousands formatting.
+- `comma_long`: integer thousands formatting.
+- `comma_double_1`: thousands formatting with one decimal place.
+- `percent_int_x100`: appends `%` to the numeric value as-is.
+- `percent_double_x100`: multiplies numeric value by 100, rounds, appends `%`.
+- `decimal_0`: rounded integer string.
+- `decimal_1`: fixed one decimal place.
+- `decimal_2`: fixed two decimal places.
+- `scientific`: JavaScript exponential notation with two decimals.
+- `duration_seconds`: input is ticks. Values below 20 ticks render as ticks;
+  otherwise render as seconds.
+- `duration_ticks`: input is ticks and always renders as ticks.
+- `duration_auto_unit`: input is seconds. Chooses seconds/minutes/hours/days.
+- `java_double`: Java-like double string for GT metadata.
+- `bool_yes_no`: translated yes/no.
+
+Formatter text comes from i18n where needed:
+
+- `spec.gregtech.format.duration.ticks`
+- `spec.gregtech.format.duration.seconds`
+- `spec.gregtech.format.duration.autoSeconds`
+- `spec.gregtech.format.duration.autoMinutes`
+- `spec.gregtech.format.duration.autoHours`
+- `spec.gregtech.format.duration.autoDays`
+- `spec.gregtech.format.bool.yes`
+- `spec.gregtech.format.bool.no`
+
+Do not add language-specific format names such as `duration_seconds_en` or
+`bool_yes_no_cn`.
+
+## I18n Messages
+
+Message files are normal `vue-i18n` locale objects:
+
+```json
+{
+  "spec": {
+    "gregtech": {
+      "handler": {
+        "macerator": {
+          "name": "Macerator",
+          "line": {
+            "duration": {
+              "label": "Duration"
+            }
+          }
+        }
+      }
     }
   }
 }
 ```
 
-引用方式（在 line 里）：
+The corresponding flat key is:
 
-```json
-{ "kind": "metadata", "key": "coil_heat",
-  "label": "热容",
-  "format": "comma_int",
-  "suffix": " K",
-  "suffix_table": "coil_material",
-  "suffix_table_lookup": "ceil",
-  "suffix_table_format": " ({0})" }
+```text
+spec.gregtech.handler.macerator.line.duration.label
 ```
 
-渲染流程：
-1. ctx.metadata.coil_heat = 4500
-2. format: `comma_int(4500)` → `"4,500"`
-3. suffix: `+ " K"` → `"4,500 K"`
-4. suffix_table + `suffix_table_lookup: "ceil"`：取最小的 `table_key >= 4500`，即 `4501` → `"钛铂钒"`
-5. suffix_table_format `" ({0})"` 把 `{0}` 替换成 `"钛铂钒"` → `" (钛铂钒)"`
-6. 拼到末尾 → `"4,500 K (钛铂钒)"`
+Key rules:
 
----
+- All keys referenced by `display.json` must start with `spec.gregtech.`.
+- Handler names should use `spec.gregtech.handler.<handler>.name`.
+- Handler line labels should use
+  `spec.gregtech.handler.<handler>.line.<semanticName>.label`.
+- Handler line literals should use
+  `spec.gregtech.handler.<handler>.line.<semanticName>.literal`.
+- Shared templates should use `spec.gregtech.template.<name>`.
+- Shared suffixes/prefixes should use `spec.gregtech.suffix.<name>` and
+  `spec.gregtech.prefix.<name>`.
+- Shared table values should use `spec.gregtech.table.<tableName>.<valueName>`.
+- Missing keys intentionally render as the key itself and log
+  `console.warn`, so bad keys are visible during review.
 
-## expr — 沙箱表达式
+`valueTemplateKey` uses named parameters. At minimum these are available:
 
-只在以下场景用：
-- 位运算（`nke_range % 10000`）
-- JSON 多字段组合（`value.minEnergy * 1000 + "-" + value.maxEnergy * 1000`）
-- 条件分支（`subZero ? "加热" : "冷却"`）
-- 拼接计算结果（`lftr_output_power × duration_ticks`）
+- `{value}`: rendered value text before the template.
+- `{raw}`: raw value from the line kind.
+- `{result}`: expression result, or raw value when no expression was used.
+- any names from `templateArgs`.
 
-**绑定到 expr 的变量**：
-- `value` —— 当前 line 取到的数据（按 kind 不同）
-- `ctx` —— 完整 ctx 对象（极少用，主要用于跨字段计算）
-- `tables` —— spec.tables 的引用
-
-**可用辅助函数**：
-- `comma(value)` —— 千分位整数格式化
-- `tier(value)` —— 按 EU/t 计算 GT 电压等级名，超过 MAX 返回 `MAX+`
-- `lookup(table, key)` —— 查 `tables` 映射
-- `int(value)` / `floor(value)` / `ceil(value)` / `round(value)` —— 数值取整
-- `band(value, mask)` / `bor(value, mask)` / `shr(value, bits)` —— 位运算
-- `len(value)` —— 数组长度
-
-**表达式引擎**：[expr-eval](https://www.npmjs.com/package/expr-eval) 沙箱化 JavaScript 表达式。**不支持** `new`、函数定义、`this`、`window` 等；支持算术 / 比较 / 三元 / 数组下标 / `.` 字段访问 / 内置函数。
-
-**禁止**：`eval()` / `new Function()` / 任意 import / 任何 IO。
-
-加载时所有 expr 提前编译，编译失败的 spec **拒绝加载**（前端启动报错）。
-
----
-
-## 5 个完整示例
-
-### 示例 1：研磨机（最简单，只有标准三件套）
+Example:
 
 ```json
-"macerator": {
-  "name_cn": "研磨机",
-  "lines": [
-    { "kind": "total_eu", "label": "总计",
-      "format": "comma_long", "suffix": " EU" },
-    { "kind": "voltage_block",
-      "single": { "label": "使用",
-                  "expr": "value + ' EU/t (' + ctx.voltage_tier + ')'",
-                  "format": "comma_int" }
-    },
-    { "kind": "duration", "label": "时间",
-      "format": "duration_seconds" }
-  ]
+{
+  "valueTemplateKey": "spec.gregtech.template.percentChance",
+  "templateArgs": {
+    "chance": "value * 100"
+  }
 }
 ```
 
-### 示例 2：高炉（带 coil_heat 表查 + cleanroom flag）
+Message:
 
 ```json
-"blastfurnace": {
-  "name_cn": "高炉",
-  "lines": [
-    { "kind": "total_eu", "label": "总计",
-      "format": "comma_long", "suffix": " EU" },
-    { "kind": "voltage_block",
-      "single": { "label": "使用", "expr": "value + ' EU/t (' + ctx.voltage_tier + ')'",
-                  "format": "comma_int" }
-    },
-    { "kind": "duration", "label": "时间",
-      "format": "duration_seconds" },
-    { "kind": "metadata", "key": "coil_heat",
-      "label": "热容",
-      "format": "comma_int",
-      "suffix": " K",
-      "suffix_table": "coil_material",
-      "suffix_table_lookup": "ceil",
-      "suffix_table_format": " ({0})" },
-    { "kind": "flag", "key": "cleanroom",
-      "label": null,
-      "show_if_true": true,
-      "literal": "需要超净间" }
-  ]
+{
+  "spec": {
+    "gregtech": {
+      "template": {
+        "percentChance": "{value} chance"
+      }
+    }
+  }
 }
 ```
 
-### 示例 3：电弧炉（amp=3，voltage_block 三行）
+Use templates instead of expression concatenation when different locales may
+need different word order.
 
-```json
-"arcfurnace": {
-  "name_cn": "电弧炉",
-  "lines": [
-    { "kind": "total_eu", "label": "总计",
-      "format": "comma_long", "suffix": " EU" },
-    { "kind": "voltage_block",
-      "split": [
-        { "label": "使用",
-          "expr": "value",
-          "format": "comma_int", "suffix": " EU/t " },
-        { "label": "电压",
-          "expr": "ctx.voltage / ctx.amperage",
-          "format": "comma_int",
-          "suffix_table_format": " EU/t ({tier_name})",
-          "expr_post": "result + ' EU/t (' + ctx.voltage_tier + ')'"
-        },
-        { "label": "电流",
-          "expr": "ctx.amperage",
-          "suffix": " A" }
-      ]
-    },
-    { "kind": "duration", "label": "时间",
-      "format": "duration_seconds" }
-  ]
-}
+## Language-Neutral Rules
+
+`display.json` must not contain user-visible prose in any language.
+
+Allowed in `display.json`:
+
+- i18n keys, for example `spec.gregtech.handler.macerator.name`.
+- handler ids and metadata keys.
+- enum-like values from source data, for example `PROCESSING`, `FUEL`, `BIO`.
+- voltage tier names, for example `LV`, `HV`, `LuV`, `MAX`.
+- formulas and expression syntax.
+- unit symbols that are part of formulas or game constants, when not used as
+  prose.
+
+Forbidden in `display.json`:
+
+- Chinese labels or literals.
+- English labels or literals such as `Duration`, `Steam output shown`, or
+  `Hydrogen`.
+- concatenated natural-language fragments in `expr`.
+- old v1 text fields such as `name_cn`, `label`, `literal`, `prefix`, `suffix`,
+  and `suffix_table_format`.
+- language-specific formatter names.
+
+All visible text belongs in `spec/i18n/<locale>.json`, even if the current text
+is English.
+
+## Frontend Loading Flow
+
+For `GregTechMetadataStrip`:
+
+1. Load `dataset.displaySpecUrl`.
+2. Load `dataset.displaySpecMessagesUrl` for the active dataset locale.
+3. Merge messages through `i18n.global.mergeLocaleMessage(locale, messages)`.
+4. Render recipe lines with `renderRecipe({ spec, ctx, t })`.
+5. Return final `DisplayItem[]`.
+
+Spec cache key:
+
+- `displaySpecUrl`
+
+Message cache key:
+
+- `<locale>:<displaySpecMessagesUrl>`
+
+The dataset locale controls the active `vue-i18n` locale. First-stage fallback is
+also `zh_CN`.
+
+## Validation
+
+Run after editing spec files:
+
+```bash
+node tools/validate-display-spec-i18n.mjs
 ```
 
-> **注**：amp>1 时 voltage_block 用 `split` 三段，单独每段写 label/expr/format/suffix。
+The validator checks:
 
-### 示例 4：和谐之眼（EoH，8 个新 metadata + Warning hardcode）
+- `display.json` has `schema: "gregtech-display-spec"`.
+- `display.json` has `version: 2`.
+- every referenced `spec.gregtech.*` key exists in `spec/i18n/zh_CN.json`.
+- `spec.gregtech.*` keys inside expression string literals also exist.
+- obvious CJK text is not left in `display.json`.
+- suspicious natural-language string literals inside `expr`, `show_if`, and
+  `valueKeyExpr` are reported unless whitelisted.
 
-```json
-"tt_eyeofharmony": {
-  "name_cn": "和谐之眼",
-  "lines": [
-    { "kind": "duration", "label": "时间",
-      "format": "duration_seconds" },
-    { "kind": "metadata", "key": "eoh_hydrogen",
-      "label": "Hydrogen",
-      "format": "comma_long", "suffix": " L" },
-    { "kind": "metadata", "key": "eoh_helium",
-      "label": "Helium",
-      "format": "comma_long", "suffix": " L" },
-    { "kind": "metadata", "key": "eoh_spacetime_tier",
-      "label": "Spacetime Tier",
-      "expr": "tables.eoh_spacetime_fancy[String(value)]",
-      "color_code": "§l" },
-    { "kind": "metadata", "key": "eoh_eu_output",
-      "label": "EU Output",
-      "format": "comma_long", "suffix": " EU" },
-    { "kind": "metadata", "key": "eoh_eu_start_cost",
-      "label": "EU Input",
-      "format": "comma_long", "suffix": " EU" },
-    { "kind": "metadata", "key": "eoh_base_success_chance",
-      "label": "Base Recipe Chance",
-      "scale": 100,
-      "format": "decimal_0", "suffix": "%" },
-    { "kind": "metadata", "key": "eoh_energy_efficiency",
-      "label": "Recipe Energy Efficiency",
-      "scale": 100,
-      "format": "decimal_0", "suffix": "%" }
-  ]
-}
-```
+The validator is intentionally conservative. If it flags a real formula or
+source-data enum, prefer adding a narrow whitelist entry rather than weakening
+the scan.
 
-### 示例 5：兰系列目标室（JSON metadata 多字段组合 + 粒子图标）
+## Maintenance Checklist
 
-```json
-"lanth_targetchamber": {
-  "name_cn": "兰系列目标室",
-  "lines": [
-    { "kind": "voltage_block",
-      "split": [
-        { "label": "使用", "expr": "value",
-          "format": "comma_int", "suffix": " EU/t " },
-        { "label": "电压",
-          "expr": "ctx.voltage / ctx.amperage + ' EU/t (' + ctx.voltage_tier + ')'",
-          "format": "comma_int" },
-        { "label": "电流", "expr": "ctx.amperage", "suffix": " A" }
-      ]
-    },
-    { "kind": "metadata_json", "key": "target_chamber_metadata",
-      "label": "能量",
-      "expr": "(value.minEnergy * 1000).toFixed(0) + '-' + (value.maxEnergy * 1000).toFixed(0)",
-      "suffix": " eV" },
-    { "kind": "metadata_json", "key": "target_chamber_metadata",
-      "label": "聚焦",
-      "expr": "'>=' + value.minFocus" },
-    { "kind": "metadata_json", "key": "target_chamber_metadata",
-      "label": "数量",
-      "expr": "value.amount",
-      "format": "comma_int" },
-    { "kind": "particle_icon", "key": "target_chamber_metadata",
-      "json_path": "particleItem" }
-  ]
-}
-```
+When adding a new displayed field:
 
----
+1. Add a line to the correct handler in `spec/display.json`.
+2. Put every visible word in `spec/i18n/zh_CN.json`.
+3. Use `valueTemplateKey` for phrases or locale-dependent order.
+4. Use `expr` only for computation and source-data lookup.
+5. Add shared lookup text to `tables` plus `spec.gregtech.table.*` messages.
+6. Sync source files to `exports/gtnh/2.8.4/official/spec/...` if the dev
+   server should serve the edited version immediately.
+7. Run `node tools/validate-display-spec-i18n.mjs`.
 
-## 验证规则（前端启动时检查）
-
-加载 spec 后前端校验：
-
-1. **handler id 唯一**
-2. **每个 line 必有 kind**，且 kind 在已知枚举内
-3. **format 在已知枚举内**
-4. **expr 编译通过**（用 expr-eval 编译；失败的整段 spec 拒绝加载）
-5. **suffix_table 引用的 table 存在**
-6. **JSON 结构形式正确**（schema 简版校验）
-
-任一失败：spec 拒绝加载，控制台报错，前端走"无 displayItems"分支（recipe 还是能显示，只是没有 metadata 行）。
-
----
-
-## 多语言
-
-每种语言一份 spec：
-- `webnei/ui/src/components/recipe/gregtech/spec/zh_CN.json`
-- `webnei/ui/src/components/recipe/gregtech/spec/en_US.json`
-
-`dataset.language` 决定用哪份。**不同语言的 spec 不共享 lines，可以独立调整 label 甚至 line 结构**（比如 `Base success chance` 英文 hardcode，zh_CN 也保留英文）。
-
-后端在 `/api/datasets/{id}` 响应里加 `displaySpecPath: "/spec/gregtech/zh_CN.json"`，前端按此 fetch。
-
----
-
-## 何时改 spec
-
-| 场景 | 改什么 |
-|---|---|
-| 加新 handler 显示 | spec.handlers 加一段 |
-| 改某 handler 渲染规则 | 改该 handler 的 lines |
-| 加新格式（如某行要科学计数） | 前端 displaySpec.ts 加 format 函数 + spec 用 |
-| 加新 line kind | 前端解析器加 case + 本文档同步 + spec 用 |
-| 修复术语翻译 | 改 zh_CN.json 的 label / literal |
-| 新增 GT 版本 | exporter 重导后改 spec 适配新字段 |
-
-不要在 Vue 组件 / 后端 Java 里硬编码 metadata key 名 / label / 单位字符串。
+Do not use `tools/build-display-spec.py` as the authority for v2 until it is
+explicitly updated for this schema.

@@ -1,0 +1,4618 @@
+{
+  "schema": "gregtech-display-spec",
+  "version": 2,
+  "tables": {
+    "tier_name": {
+      "0": "spec.gregtech.table.tier_name.k_0",
+      "1": "spec.gregtech.table.tier_name.k_1",
+      "2": "spec.gregtech.table.tier_name.k_2",
+      "3": "spec.gregtech.table.tier_name.k_3",
+      "4": "spec.gregtech.table.tier_name.k_4",
+      "5": "spec.gregtech.table.tier_name.k_5",
+      "6": "spec.gregtech.table.tier_name.k_6",
+      "7": "spec.gregtech.table.tier_name.k_7",
+      "8": "spec.gregtech.table.tier_name.k_8",
+      "9": "spec.gregtech.table.tier_name.k_9",
+      "10": "spec.gregtech.table.tier_name.k_10",
+      "11": "spec.gregtech.table.tier_name.k_11",
+      "12": "spec.gregtech.table.tier_name.k_12",
+      "13": "spec.gregtech.table.tier_name.k_13",
+      "14": "spec.gregtech.table.tier_name.k_14"
+    },
+    "coil_material": {
+      "1801": "spec.gregtech.table.coil_material.k_1801",
+      "2701": "spec.gregtech.table.coil_material.k_2701",
+      "3601": "spec.gregtech.table.coil_material.k_3601",
+      "4501": "spec.gregtech.table.coil_material.k_4501",
+      "5401": "spec.gregtech.table.coil_material.k_5401",
+      "6301": "spec.gregtech.table.coil_material.k_6301",
+      "7201": "spec.gregtech.table.coil_material.k_7201",
+      "8101": "spec.gregtech.table.coil_material.k_8101",
+      "9001": "spec.gregtech.table.coil_material.k_9001",
+      "9901": "spec.gregtech.table.coil_material.k_9901",
+      "10801": "spec.gregtech.table.coil_material.k_10801",
+      "11701": "spec.gregtech.table.coil_material.k_11701",
+      "12601": "spec.gregtech.table.coil_material.k_12601",
+      "13501": "spec.gregtech.table.coil_material.k_13501",
+      "*": "spec.gregtech.table.coil_material.star"
+    },
+    "chemplant_casing": {
+      "0": "spec.gregtech.table.chemplant_casing.k_0",
+      "1": "spec.gregtech.table.chemplant_casing.k_1",
+      "2": "spec.gregtech.table.chemplant_casing.k_2",
+      "3": "spec.gregtech.table.chemplant_casing.k_3",
+      "4": "spec.gregtech.table.chemplant_casing.k_4",
+      "5": "spec.gregtech.table.chemplant_casing.k_5",
+      "6": "spec.gregtech.table.chemplant_casing.k_6",
+      "7": "spec.gregtech.table.chemplant_casing.k_7"
+    },
+    "eoh_spacetime_fancy": {
+      "0": "spec.gregtech.table.eoh_spacetime_fancy.k_0",
+      "1": "spec.gregtech.table.eoh_spacetime_fancy.k_1",
+      "2": "spec.gregtech.table.eoh_spacetime_fancy.k_2",
+      "3": "spec.gregtech.table.eoh_spacetime_fancy.k_3",
+      "4": "spec.gregtech.table.eoh_spacetime_fancy.k_4",
+      "5": "spec.gregtech.table.eoh_spacetime_fancy.k_5",
+      "6": "spec.gregtech.table.eoh_spacetime_fancy.k_6",
+      "7": "spec.gregtech.table.eoh_spacetime_fancy.k_7",
+      "8": "spec.gregtech.table.eoh_spacetime_fancy.k_8"
+    },
+    "decay_type": {
+      "Unknown": "spec.gregtech.table.decay_type.Unknown",
+      "Alpha": "spec.gregtech.table.decay_type.Alpha",
+      "SpontaneousFission": "spec.gregtech.table.decay_type.SpontaneousFission",
+      "Cluster": "spec.gregtech.table.decay_type.Cluster",
+      "AlphaTransfer": "spec.gregtech.table.decay_type.AlphaTransfer",
+      "BetaMinus": "spec.gregtech.table.decay_type.BetaMinus",
+      "BetaPlus": "spec.gregtech.table.decay_type.BetaPlus"
+    }
+  },
+  "handlers": {
+    "tic_bolt_molding": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 27367,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.tic_bolt_molding.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.tic_bolt_molding.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.tic_bolt_molding.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.tic_bolt_molding.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.tic_bolt_molding.name"
+    },
+    "assembler": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 13233,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.assembler.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.assembler.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.assembler.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.assembler.line.l2.label"
+        },
+        {
+          "kind": "flag",
+          "key": "cleanroom",
+          "show_if_true": true,
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.assembler.line.l3.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.assembler.name"
+    },
+    "macerator_recycling": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 11064,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.macerator_recycling.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.macerator_recycling.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.macerator_recycling.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.macerator_recycling.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.macerator_recycling.name"
+    },
+    "fluidextractor_recycling": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 8983,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fluidextractor_recycling.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fluidextractor_recycling.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.fluidextractor_recycling.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.fluidextractor_recycling.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fluidextractor_recycling.name"
+    },
+    "tic_part_extruding": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 8825,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.tic_part_extruding.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.tic_part_extruding.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.tic_part_extruding.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.tic_part_extruding.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.tic_part_extruding.name"
+    },
+    "alloysmelter_recycling": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 8515,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.alloysmelter_recycling.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.alloysmelter_recycling.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.alloysmelter_recycling.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.alloysmelter_recycling.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.alloysmelter_recycling.name"
+    },
+    "arcfurnace_recycling": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 8349,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.arcfurnace_recycling.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.arcfurnace_recycling.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "split": [
+            {
+              "expr": "ctx.voltage",
+              "format": "comma_int",
+              "labelKey": "spec.gregtech.handler.arcfurnace_recycling.line.l1.split.s0.label",
+              "suffixKey": "spec.gregtech.handler.arcfurnace_recycling.line.l1.split.s0.suffix"
+            },
+            {
+              "expr": "comma(int(ctx.voltage / ctx.amperage))",
+              "format": "as_string",
+              "labelKey": "spec.gregtech.handler.arcfurnace_recycling.line.l1.split.s1.label",
+              "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+              "templateArgs": {
+                "tier": "ctx.voltage_tier"
+              }
+            },
+            {
+              "expr": "ctx.amperage",
+              "format": "direct",
+              "labelKey": "spec.gregtech.handler.arcfurnace_recycling.line.l1.split.s2.label",
+              "suffixKey": "spec.gregtech.handler.arcfurnace_recycling.line.l1.split.s2.suffix"
+            }
+          ]
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.arcfurnace_recycling.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.arcfurnace_recycling.name"
+    },
+    "cutter": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 8029,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.cutter.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.cutter.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.cutter.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.cutter.line.l2.label"
+        },
+        {
+          "kind": "flag",
+          "key": "cleanroom",
+          "show_if_true": true,
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.cutter.line.l3.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.cutter.name"
+    },
+    "macerator": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 5228,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.macerator.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.macerator.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.macerator.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.macerator.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.macerator.name"
+    },
+    "fluidsolidifier": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 4796,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fluidsolidifier.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fluidsolidifier.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.fluidsolidifier.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.fluidsolidifier.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fluidsolidifier.name"
+    },
+    "hammer": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 4288,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.hammer.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.hammer.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.hammer.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.hammer.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.hammer.name"
+    },
+    "fluidcanner": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 4206,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fluidcanner.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fluidcanner.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.fluidcanner.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.fluidcanner.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fluidcanner.name"
+    },
+    "extruder": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 3899,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.extruder.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.extruder.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.extruder.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.extruder.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.extruder.name"
+    },
+    "bender": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 3269,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.bender.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.bender.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.bender.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.bender.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.bender.name"
+    },
+    "packager": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 2205,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.packager.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.packager.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.packager.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.packager.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.packager.name"
+    },
+    "fluidextraction": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1766,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fluidextraction.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fluidextraction.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.fluidextraction.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.fluidextraction.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fluidextraction.name"
+    },
+    "laserengraver": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1703,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.laserengraver.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.laserengraver.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.laserengraver.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.laserengraver.line.l2.label"
+        },
+        {
+          "kind": "flag",
+          "key": "cleanroom",
+          "show_if_true": true,
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.laserengraver.line.l3.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.laserengraver.name"
+    },
+    "chemicalreactor": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1509,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.chemicalreactor.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.chemicalreactor.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.chemicalreactor.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.chemicalreactor.line.l2.label"
+        },
+        {
+          "kind": "flag",
+          "key": "cleanroom",
+          "show_if_true": true,
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.chemicalreactor.line.l3.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.chemicalreactor.name"
+    },
+    "centrifuge": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1463,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.centrifuge.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.centrifuge.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.centrifuge.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.centrifuge.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.centrifuge.name"
+    },
+    "multiblockcentrifuge": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1463,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.multiblockcentrifuge.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.multiblockcentrifuge.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.multiblockcentrifuge.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.multiblockcentrifuge.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.multiblockcentrifuge.name"
+    },
+    "multiblockchemicalReactor": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1425,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.multiblockchemicalReactor.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.multiblockchemicalReactor.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.multiblockchemicalReactor.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.multiblockchemicalReactor.line.l2.label"
+        },
+        {
+          "kind": "flag",
+          "key": "cleanroom",
+          "show_if_true": true,
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.multiblockchemicalReactor.line.l3.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.multiblockchemicalReactor.name"
+    },
+    "lathe": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1401,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.lathe.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.lathe.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.lathe.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.lathe.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.lathe.name"
+    },
+    "wiremill": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1342,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.wiremill.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.wiremill.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.wiremill.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.wiremill.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.wiremill.name"
+    },
+    "tt_fog_molten": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1308,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.tt_fog_molten.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.tt_fog_molten.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.tt_fog_molten.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.tt_fog_molten.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "coil_heat",
+          "format": "comma_int",
+          "suffix_table": "coil_material",
+          "suffix_table_lookup": "ceil",
+          "labelKey": "spec.gregtech.handler.tt_fog_molten.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.tt_fog_molten.line.l3.suffix",
+          "suffixTableFormatKey": "spec.gregtech.handler.tt_fog_molten.line.l3.suffixTableFormat"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.tt_fog_molten.name"
+    },
+    "blastfurnace": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1308,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.blastfurnace.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.blastfurnace.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.blastfurnace.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.blastfurnace.line.l2.label"
+        },
+        {
+          "kind": "flag",
+          "key": "cleanroom",
+          "show_if_true": true,
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.blastfurnace.line.l3.literal"
+        },
+        {
+          "kind": "metadata",
+          "key": "coil_heat",
+          "format": "comma_int",
+          "suffix_table": "coil_material",
+          "suffix_table_lookup": "ceil",
+          "labelKey": "spec.gregtech.handler.blastfurnace.line.l4.label",
+          "suffixKey": "spec.gregtech.handler.blastfurnace.line.l4.suffix",
+          "suffixTableFormatKey": "spec.gregtech.handler.blastfurnace.line.l4.suffixTableFormat"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.blastfurnace.name"
+    },
+    "alloysmelter_molding": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1293,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.alloysmelter_molding.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.alloysmelter_molding.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.alloysmelter_molding.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.alloysmelter_molding.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.alloysmelter_molding.name"
+    },
+    "gtpp_cokeoven": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1275,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_cokeoven.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_cokeoven.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_cokeoven.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_cokeoven.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_cokeoven.name"
+    },
+    "pyrolyse": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1259,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.pyrolyse.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.pyrolyse.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.pyrolyse.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.pyrolyse.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.pyrolyse.name"
+    },
+    "compressor": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1125,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.compressor.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.compressor.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.compressor.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.compressor.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "compression_tier",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.compressor.line.l3.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.compressor.name"
+    },
+    "implosion": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1096,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.implosion.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.implosion.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.implosion.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.implosion.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.implosion.name"
+    },
+    "mixer": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 975,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.mixer.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.mixer.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.mixer.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.mixer.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.mixer.name"
+    },
+    "multiblockmixer": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 968,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.multiblockmixer.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.multiblockmixer.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.multiblockmixer.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.multiblockmixer.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.multiblockmixer.name"
+    },
+    "canner": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 885,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.canner.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.canner.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.canner.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.canner.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.canner.name"
+    },
+    "gtpp_simplewasher": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 836,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_simplewasher.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_simplewasher.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_simplewasher.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_simplewasher.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_simplewasher.name"
+    },
+    "chemicalbath": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 782,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.chemicalbath.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.chemicalbath.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.chemicalbath.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.chemicalbath.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.chemicalbath.name"
+    },
+    "alloysmelter": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 691,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.alloysmelter.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.alloysmelter.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.alloysmelter.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.alloysmelter.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.alloysmelter.name"
+    },
+    "thermalcentrifuge": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 676,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.thermalcentrifuge.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.thermalcentrifuge.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "split": [
+            {
+              "expr": "ctx.voltage",
+              "format": "comma_int",
+              "labelKey": "spec.gregtech.handler.thermalcentrifuge.line.l1.split.s0.label",
+              "suffixKey": "spec.gregtech.handler.thermalcentrifuge.line.l1.split.s0.suffix"
+            },
+            {
+              "expr": "comma(int(ctx.voltage / ctx.amperage))",
+              "format": "as_string",
+              "labelKey": "spec.gregtech.handler.thermalcentrifuge.line.l1.split.s1.label",
+              "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+              "templateArgs": {
+                "tier": "ctx.voltage_tier"
+              }
+            },
+            {
+              "expr": "ctx.amperage",
+              "format": "direct",
+              "labelKey": "spec.gregtech.handler.thermalcentrifuge.line.l1.split.s2.label",
+              "suffixKey": "spec.gregtech.handler.thermalcentrifuge.line.l1.split.s2.suffix"
+            }
+          ]
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.thermalcentrifuge.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.thermalcentrifuge.name"
+    },
+    "orewasher": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 662,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.orewasher.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.orewasher.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.orewasher.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.orewasher.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.orewasher.name"
+    },
+    "circuitassembler": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 584,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.circuitassembler.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.circuitassembler.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.circuitassembler.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.circuitassembler.line.l2.label"
+        },
+        {
+          "kind": "flag",
+          "key": "cleanroom",
+          "show_if_true": true,
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.circuitassembler.line.l3.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.circuitassembler.name"
+    },
+    "distillery": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 485,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.distillery.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.distillery.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.distillery.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.distillery.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.distillery.name"
+    },
+    "assemblyline": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 483,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.assemblyline.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.assemblyline.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.assemblyline.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.assemblyline.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.assemblyline.name"
+    },
+    "brewing": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 444,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.brewing.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.brewing.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.brewing.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.brewing.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.brewing.name"
+    },
+    "primitiveblast": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 388,
+      "lines": [
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.primitiveblast.line.l0.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.primitiveblast.name"
+    },
+    "formingpress": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 373,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.formingpress.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.formingpress.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.formingpress.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.formingpress.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.formingpress.name"
+    },
+    "electrolyzer": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 364,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.electrolyzer.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.electrolyzer.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.electrolyzer.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.electrolyzer.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.electrolyzer.name"
+    },
+    "unpackager": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 357,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.unpackager.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.unpackager.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.unpackager.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.unpackager.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.unpackager.name"
+    },
+    "extractor": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 353,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.extractor.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.extractor.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.extractor.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.extractor.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.extractor.name"
+    },
+    "multiblockelectrolyzer": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 351,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.multiblockelectrolyzer.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.multiblockelectrolyzer.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.multiblockelectrolyzer.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.multiblockelectrolyzer.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.multiblockelectrolyzer.name"
+    },
+    "vacuumfreezer": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 322,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.vacuumfreezer.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.vacuumfreezer.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.vacuumfreezer.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.vacuumfreezer.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.vacuumfreezer.name"
+    },
+    "autoclave": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 321,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.autoclave.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.autoclave.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.autoclave.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.autoclave.line.l2.label"
+        },
+        {
+          "kind": "flag",
+          "key": "cleanroom",
+          "show_if_true": true,
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.autoclave.line.l3.literal"
+        },
+        {
+          "kind": "flag",
+          "key": "low_gravity",
+          "show_if_true": true,
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.autoclave.line.l4.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.autoclave.name"
+    },
+    "bw_eic": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 308,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.bw_eic.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.bw_eic.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.bw_eic.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.bw_eic.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.bw_eic.name"
+    },
+    "tt_researchstation": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 304,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.tt_researchstation.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.tt_researchstation.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.tt_researchstation.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "metadata",
+          "key": "research_station_data",
+          "expr": "band(value, 65535)",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.tt_researchstation.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "research_station_data",
+          "expr": "shr(value, 16)",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.tt_researchstation.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.tt_researchstation.line.l3.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.tt_researchstation.name"
+    },
+    "abs_non_alloy": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 300,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.abs_non_alloy.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.abs_non_alloy.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.abs_non_alloy.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.abs_non_alloy.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.abs_non_alloy.name"
+    },
+    "scanner": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 294,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.scanner.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.scanner.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.scanner.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.scanner.line.l2.label"
+        },
+        {
+          "kind": "text",
+          "show_if": "ctx.special_value == -201",
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.scanner.line.l3.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.scanner.name"
+    },
+    "gtpp_cryofreezer": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 281,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_cryofreezer.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_cryofreezer.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_cryofreezer.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_cryofreezer.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_cryofreezer.name"
+    },
+    "gtpp_chemicalplant": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 259,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_chemicalplant.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_chemicalplant.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_chemicalplant.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_chemicalplant.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "chemplant_casing_tier",
+          "expr": "value + 1",
+          "format": "direct",
+          "suffix_table": "chemplant_casing",
+          "labelKey": "spec.gregtech.handler.gtpp_chemicalplant.line.l3.label",
+          "suffixTableFormatKey": "spec.gregtech.handler.gtpp_chemicalplant.line.l3.suffixTableFormat"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_chemicalplant.name"
+    },
+    "gtpp_treefarm": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 250,
+      "lines": [
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_treefarm.line.l0.label"
+        },
+        {
+          "kind": "text",
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.gtpp_treefarm.line.l1.literal"
+        },
+        {
+          "kind": "text",
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.gtpp_treefarm.line.l2.literal"
+        },
+        {
+          "kind": "text",
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.gtpp_treefarm.line.l3.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_treefarm.name"
+    },
+    "ig_spacemining": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 225,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.ig_spacemining.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.ig_spacemining.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.ig_spacemining.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.ig_spacemining.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "space_elevator_module_tier",
+          "expr": "value",
+          "labelKey": null,
+          "valueTemplateKey": "spec.gregtech.template.requiresMkModule"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "space_mining_data",
+          "expr": "value.minDistance || '-' || value.maxDistance",
+          "labelKey": "spec.gregtech.handler.ig_spacemining.line.l4.label"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "space_mining_data",
+          "expr": "value.minSize || '-' || value.maxSize",
+          "labelKey": "spec.gregtech.handler.ig_spacemining.line.l5.label"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "space_mining_data",
+          "expr": "value.computation",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.ig_spacemining.line.l6.label",
+          "suffixKey": "spec.gregtech.handler.ig_spacemining.line.l6.suffix"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "space_mining_data",
+          "expr": "value.recipeWeight",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.ig_spacemining.line.l7.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.ig_spacemining.name"
+    },
+    "tt_fog_plasma": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 217,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.tt_fog_plasma.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.tt_fog_plasma.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.tt_fog_plasma.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.tt_fog_plasma.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "fog_plasma_multistep",
+          "format": "bool_yes_no",
+          "labelKey": "spec.gregtech.handler.tt_fog_plasma.line.l3.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "fog_plasma_tier",
+          "labelKey": "spec.gregtech.handler.tt_fog_plasma.line.l4.label",
+          "valueKeyExpr": "value == 1 ? 'spec.gregtech.value.fogPlasmaTier.t4t5' : value == 2 ? 'spec.gregtech.value.fogPlasmaTier.exotic' : 'spec.gregtech.value.fogPlasmaTier.t1t3'"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.tt_fog_plasma.name"
+    },
+    "gtpp_milling": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 200,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_milling.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_milling.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_milling.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_milling.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_milling.name"
+    },
+    "polarizer": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 191,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.polarizer.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.polarizer.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.polarizer.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.polarizer.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.polarizer.name"
+    },
+    "forgehammer_recycling": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 190,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.forgehammer_recycling.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.forgehammer_recycling.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.forgehammer_recycling.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.forgehammer_recycling.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.forgehammer_recycling.name"
+    },
+    "distillationtower": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 155,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.distillationtower.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.distillationtower.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.distillationtower.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.distillationtower.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.distillationtower.name"
+    },
+    "gg_componentassembly": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 142,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gg_componentassembly.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gg_componentassembly.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gg_componentassembly.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gg_componentassembly.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "coal_casing_tier",
+          "expr": "lookup(tables.tier_name, value)",
+          "labelKey": "spec.gregtech.handler.gg_componentassembly.line.l3.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gg_componentassembly.name"
+    },
+    "fuel_plasma": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 127,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fuel_plasma.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fuel_plasma.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fuel_plasma.name"
+    },
+    "sifter": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 121,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.sifter.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.sifter.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.sifter.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.sifter.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.sifter.name"
+    },
+    "gg_extremeheatexchanger": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 115,
+      "lines": [
+        {
+          "kind": "fluid_input",
+          "list_index": 0,
+          "expr": "value.amount",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.gg_extremeheatexchanger.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gg_extremeheatexchanger.line.l0.suffix"
+        },
+        {
+          "kind": "fluid_input",
+          "list_index": 1,
+          "expr": "value.amount",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.gg_extremeheatexchanger.line.l1.label",
+          "suffixKey": "spec.gregtech.handler.gg_extremeheatexchanger.line.l1.suffix"
+        },
+        {
+          "kind": "top_field",
+          "field": "special_value",
+          "format": "comma_int",
+          "show_if": "value > 1",
+          "labelKey": "spec.gregtech.handler.gg_extremeheatexchanger.line.l2.label",
+          "suffixKey": "spec.gregtech.handler.gg_extremeheatexchanger.line.l2.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gg_extremeheatexchanger.name"
+    },
+    "plasmaarcfurnace": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 112,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.plasmaarcfurnace.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.plasmaarcfurnace.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.plasmaarcfurnace.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.plasmaarcfurnace.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.plasmaarcfurnace.name"
+    },
+    "lanth_targetchamber": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 107,
+      "lines": [
+        {
+          "kind": "voltage_block",
+          "split": [
+            {
+              "expr": "ctx.voltage",
+              "format": "comma_int",
+              "labelKey": "spec.gregtech.handler.lanth_targetchamber.line.l0.split.s0.label",
+              "suffixKey": "spec.gregtech.handler.lanth_targetchamber.line.l0.split.s0.suffix"
+            },
+            {
+              "expr": "comma(ctx.voltage)",
+              "format": "as_string",
+              "labelKey": "spec.gregtech.handler.lanth_targetchamber.line.l0.split.s1.label",
+              "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+              "templateArgs": {
+                "tier": "ctx.voltage_tier"
+              }
+            },
+            {
+              "expr": "1",
+              "format": "direct",
+              "labelKey": "spec.gregtech.handler.lanth_targetchamber.line.l0.split.s2.label",
+              "suffixKey": "spec.gregtech.handler.lanth_targetchamber.line.l0.split.s2.suffix"
+            }
+          ]
+        },
+        {
+          "kind": "metadata_json",
+          "key": "target_chamber_metadata",
+          "expr": "comma(int(value.minEnergy * 1000)) || '-' || comma(int(value.maxEnergy * 1000))",
+          "labelKey": "spec.gregtech.handler.lanth_targetchamber.line.l1.label",
+          "suffixKey": "spec.gregtech.handler.lanth_targetchamber.line.l1.suffix"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "target_chamber_metadata",
+          "expr": "'>=' || value.minFocus",
+          "labelKey": "spec.gregtech.handler.lanth_targetchamber.line.l2.label"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "target_chamber_metadata",
+          "expr": "value.amount",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.lanth_targetchamber.line.l3.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.lanth_targetchamber.name"
+    },
+    "pcbfactory": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 105,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.pcbfactory.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.pcbfactory.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.pcbfactory.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.pcbfactory.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "pcb_factory_tier",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.pcbfactory.line.l3.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "pcb_factory_bio_upgrade",
+          "labelKey": "spec.gregtech.handler.pcbfactory.line.l4.label",
+          "valueKeyExpr": "value == 'BIO' ? 'spec.gregtech.value.pcbFactoryBioUpgrade.bioHatch' : value"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.pcbfactory.name"
+    },
+    "bw_radhatch": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 104,
+      "lines": [
+        {
+          "kind": "metadata_json",
+          "key": "SIEVERT",
+          "expr": "value.sievert",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.bw_radhatch.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.bw_radhatch.line.l0.suffix"
+        },
+        {
+          "kind": "metadata",
+          "key": "mass",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.bw_radhatch.line.l1.label",
+          "suffixKey": "spec.gregtech.handler.bw_radhatch.line.l1.suffix"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "SIEVERT",
+          "expr": "(value.sievert == 43 ? 5000 : (value.sievert == 61 ? 4500 : (value.sievert <= 100 ? ceil((8000 * tanh(-value.sievert / 20) + 8000) * 1000) : ceil(8000 * tanh(-value.sievert / 65) + 8000)))) * ctx.metadata.mass / 20",
+          "format": "java_double",
+          "labelKey": "spec.gregtech.handler.bw_radhatch.line.l2.label",
+          "suffixKey": "spec.gregtech.handler.bw_radhatch.line.l2.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.bw_radhatch.name"
+    },
+    "fuel_magic": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 92,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fuel_magic.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fuel_magic.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fuel_magic.name"
+    },
+    "replicator": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 92,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.replicator.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.replicator.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.replicator.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.replicator.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.replicator.name"
+    },
+    "gtpp_multidehydrator": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 88,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_multidehydrator.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_multidehydrator.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_multidehydrator.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_multidehydrator.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_multidehydrator.name"
+    },
+    "gtpp_dehydrator": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 87,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_dehydrator.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_dehydrator.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_dehydrator.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_dehydrator.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_dehydrator.name"
+    },
+    "cracking": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 85,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.cracking.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.cracking.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.cracking.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.cracking.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.cracking.name"
+    },
+    "plasmaforge": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 83,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.plasmaforge.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.plasmaforge.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.plasmaforge.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.plasmaforge.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "coil_heat",
+          "format": "comma_int",
+          "suffix_table": "coil_material",
+          "suffix_table_lookup": "ceil",
+          "labelKey": "spec.gregtech.handler.plasmaforge.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.plasmaforge.line.l3.suffix",
+          "suffixTableFormatKey": "spec.gregtech.handler.plasmaforge.line.l3.suffixTableFormat"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.plasmaforge.name"
+    },
+    "gtpp_abs": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 72,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_abs.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_abs.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_abs.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_abs.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_abs.name"
+    },
+    "bw_cal": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 71,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.bw_cal.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.bw_cal.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.bw_cal.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.bw_cal.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.bw_cal.name"
+    },
+    "neutroniumcompressor": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 71,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.neutroniumcompressor.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.neutroniumcompressor.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.neutroniumcompressor.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.neutroniumcompressor.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "compression_tier",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.neutroniumcompressor.line.l3.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.neutroniumcompressor.name"
+    },
+    "fusion": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 65,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fusion.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fusion.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.fusion.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.fusion.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "fusion_threshold",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fusion.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.fusion.line.l3.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fusion.name"
+    },
+    "slicer": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 58,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.slicer.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.slicer.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.slicer.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.slicer.line.l2.label"
+        },
+        {
+          "kind": "flag",
+          "key": "cleanroom",
+          "show_if_true": true,
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.slicer.line.l3.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.slicer.name"
+    },
+    "fuel_large_boiler": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 55,
+      "lines": [
+        {
+          "kind": "large_boiler_table"
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.fuel_large_boiler.line.l1.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fuel_large_boiler.name"
+    },
+    "fermenting": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 44,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fermenting.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fermenting.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.fermenting.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.fermenting.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fermenting.name"
+    },
+    "solarfactory": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 41,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.solarfactory.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.solarfactory.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.solarfactory.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.solarfactory.line.l2.label"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "solar_factory_wafer_data",
+          "expr": "value.tierRequired",
+          "format": "direct",
+          "show_if": "value.tierRequired > 0",
+          "labelKey": "spec.gregtech.handler.solarfactory.line.l3.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.solarfactory.name"
+    },
+    "electromagneticseparator": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 41,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.electromagneticseparator.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.electromagneticseparator.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.electromagneticseparator.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.electromagneticseparator.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.electromagneticseparator.name"
+    },
+    "tt_eyeofharmony": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 40,
+      "lines": [
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.tt_eyeofharmony.line.l0.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "eoh_hydrogen",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.tt_eyeofharmony.line.l1.label",
+          "suffixKey": "spec.gregtech.handler.tt_eyeofharmony.line.l1.suffix"
+        },
+        {
+          "kind": "metadata",
+          "key": "eoh_helium",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.tt_eyeofharmony.line.l2.label",
+          "suffixKey": "spec.gregtech.handler.tt_eyeofharmony.line.l2.suffix"
+        },
+        {
+          "kind": "metadata",
+          "key": "eoh_spacetime_tier",
+          "expr": "lookup(tables.eoh_spacetime_fancy, value)",
+          "labelKey": "spec.gregtech.handler.tt_eyeofharmony.line.l3.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "eoh_eu_output",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.tt_eyeofharmony.line.l4.label",
+          "suffixKey": "spec.gregtech.handler.tt_eyeofharmony.line.l4.suffix"
+        },
+        {
+          "kind": "metadata",
+          "key": "eoh_eu_start_cost",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.tt_eyeofharmony.line.l5.label",
+          "suffixKey": "spec.gregtech.handler.tt_eyeofharmony.line.l5.suffix"
+        },
+        {
+          "kind": "metadata",
+          "key": "eoh_base_success_chance",
+          "scale": 100,
+          "format": "decimal_0",
+          "labelKey": "spec.gregtech.handler.tt_eyeofharmony.line.l6.label",
+          "suffixKey": "spec.gregtech.handler.tt_eyeofharmony.line.l6.suffix"
+        },
+        {
+          "kind": "metadata",
+          "key": "eoh_energy_efficiency",
+          "scale": 100,
+          "format": "decimal_0",
+          "labelKey": "spec.gregtech.handler.tt_eyeofharmony.line.l7.label",
+          "suffixKey": "spec.gregtech.handler.tt_eyeofharmony.line.l7.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.tt_eyeofharmony.name"
+    },
+    "ggfab_toolcast": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 38,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.ggfab_toolcast.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.ggfab_toolcast.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.ggfab_toolcast.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.ggfab_toolcast.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.ggfab_toolcast.name"
+    },
+    "lanth_digester": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 34,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.lanth_digester.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.lanth_digester.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.lanth_digester.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.lanth_digester.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "coil_heat",
+          "format": "comma_int",
+          "suffix_table": "coil_material",
+          "suffix_table_lookup": "ceil",
+          "labelKey": "spec.gregtech.handler.lanth_digester.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.lanth_digester.line.l3.suffix",
+          "suffixTableFormatKey": "spec.gregtech.handler.lanth_digester.line.l3.suffixTableFormat"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.lanth_digester.name"
+    },
+    "lanth_disstank": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 33,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.lanth_disstank.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.lanth_disstank.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.lanth_disstank.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.lanth_disstank.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "dissolution_tank_ratio",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.lanth_disstank.line.l3.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.lanth_disstank.name"
+    },
+    "ic2nuclear": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 33,
+      "lines": [
+        {
+          "kind": "metadata_json",
+          "key": "ic2_nuclear_data",
+          "show_if": "value.kind == 'radioactive_cell'",
+          "labelKey": null,
+          "valueKeyExpr": "value.model == 'mox' ? 'spec.gregtech.value.ic2Nuclear.model.mox' : 'spec.gregtech.value.ic2Nuclear.model.uranium'"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "ic2_nuclear_data",
+          "expr": "value.cell_count",
+          "show_if": "value.kind == 'radioactive_cell'",
+          "labelKey": null,
+          "valueTemplateKey": "spec.gregtech.template.ic2Nuclear.neutronPulses"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "ic2_nuclear_data",
+          "expr": "fixed1(value.heat / 2) || ' * n1 * (n1 + 1)'",
+          "show_if": "value.kind == 'radioactive_cell' and value.cell_count == 1",
+          "labelKey": null,
+          "prefixKey": "spec.gregtech.prefix.ic2Nuclear.heat"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "ic2_nuclear_data",
+          "expr": "fixed1(value.heat * value.cell_count / 2) || ' * (' || floor(value.cell_count / 2 + 1) || ' + n1) * (' || (floor(value.cell_count / 2 + 1) + 1) || ' + n1)'",
+          "show_if": "value.kind == 'radioactive_cell' and value.cell_count != 1",
+          "labelKey": null,
+          "prefixKey": "spec.gregtech.prefix.ic2Nuclear.heat"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "ic2_nuclear_data",
+          "expr": "fixed1(value.energy * value.cell_count * floor(value.cell_count / 2 + 1) * value.nuclear_power_multiplier) || ' + n2 * ' || fixed1(value.energy * value.nuclear_power_multiplier)",
+          "show_if": "value.kind == 'radioactive_cell'",
+          "labelKey": null,
+          "prefixKey": "spec.gregtech.prefix.ic2Nuclear.energy",
+          "suffixKey": "spec.gregtech.suffix.euPerTick"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "ic2_nuclear_data",
+          "show_if": "value.kind == 'breeder_cell'",
+          "labelKey": null,
+          "valueKeyExpr": "value.breeder_type == 'neutron_reflecting' ? 'spec.gregtech.value.ic2Nuclear.breeder.neutronReflecting' : 'spec.gregtech.value.ic2Nuclear.breeder.thermal'"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "ic2_nuclear_data",
+          "show_if": "value.kind == 'breeder_cell'",
+          "labelKey": null,
+          "valueTemplateKey": "spec.gregtech.template.ic2Nuclear.heatBonusStep",
+          "templateArgs": {
+            "step": "value.heat_bonus_step"
+          }
+        },
+        {
+          "kind": "metadata_json",
+          "key": "ic2_nuclear_data",
+          "expr": "value.heat_bonus_multiplier",
+          "show_if": "value.kind == 'breeder_cell'",
+          "labelKey": null,
+          "valueTemplateKey": "spec.gregtech.template.ic2Nuclear.speedBoost"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "ic2_nuclear_data",
+          "expr": "value.required_pulses",
+          "show_if": "value.kind == 'breeder_cell'",
+          "labelKey": null,
+          "prefixKey": "spec.gregtech.prefix.ic2Nuclear.requiredPulses"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.ic2nuclear.name"
+    },
+    "gtpp_qft": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 29,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_qft.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_qft.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_qft.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_qft.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "qft_focus_tier",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.gtpp_qft.line.l3.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_qft.name"
+    },
+    "fuel_gas_turbine": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 28,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fuel_gas_turbine.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fuel_gas_turbine.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fuel_gas_turbine.name"
+    },
+    "quantumcomputer": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 27,
+      "lines": [
+        {
+          "kind": "metadata_json",
+          "key": "quantum_computer_data",
+          "expr": "value.heatConstant",
+          "format": "decimal_1",
+          "show_if": "value.subZero == true",
+          "labelKey": "spec.gregtech.handler.quantumcomputer.line.l0.label"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "quantum_computer_data",
+          "expr": "value.coolConstant",
+          "format": "decimal_1",
+          "show_if": "value.subZero == false",
+          "labelKey": "spec.gregtech.handler.quantumcomputer.line.l1.label"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "quantum_computer_data",
+          "expr": "value.computation",
+          "format": "decimal_1",
+          "show_if": "value.subZero == true",
+          "labelKey": "spec.gregtech.handler.quantumcomputer.line.l2.label"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "quantum_computer_data",
+          "expr": "value.maxHeat",
+          "format": "decimal_1",
+          "labelKey": "spec.gregtech.handler.quantumcomputer.line.l3.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.quantumcomputer.name"
+    },
+    "ig_spaceassembler": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 23,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.ig_spaceassembler.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.ig_spaceassembler.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.ig_spaceassembler.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.ig_spaceassembler.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "space_elevator_module_tier",
+          "expr": "value",
+          "labelKey": null,
+          "valueTemplateKey": "spec.gregtech.template.requiresMkModule"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.ig_spaceassembler.name"
+    },
+    "fuel_diesel": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 20,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fuel_diesel.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fuel_diesel.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fuel_diesel.name"
+    },
+    "gtpp_fuel_semifluid": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 20,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_fuel_semifluid.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_fuel_semifluid.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_fuel_semifluid.name"
+    },
+    "arcfurnace": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 20,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.arcfurnace.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.arcfurnace.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "split": [
+            {
+              "expr": "ctx.voltage",
+              "format": "comma_int",
+              "labelKey": "spec.gregtech.handler.arcfurnace.line.l1.split.s0.label",
+              "suffixKey": "spec.gregtech.handler.arcfurnace.line.l1.split.s0.suffix"
+            },
+            {
+              "expr": "comma(int(ctx.voltage / ctx.amperage))",
+              "format": "as_string",
+              "labelKey": "spec.gregtech.handler.arcfurnace.line.l1.split.s1.label",
+              "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+              "templateArgs": {
+                "tier": "ctx.voltage_tier"
+              }
+            },
+            {
+              "expr": "ctx.amperage",
+              "format": "direct",
+              "labelKey": "spec.gregtech.handler.arcfurnace.line.l1.split.s2.label",
+              "suffixKey": "spec.gregtech.handler.arcfurnace.line.l1.split.s2.suffix"
+            }
+          ]
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.arcfurnace.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.arcfurnace.name"
+    },
+    "gtpp_cyclotron": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 20,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_cyclotron.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_cyclotron.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_cyclotron.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_cyclotron.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_cyclotron.name"
+    },
+    "fluidheater": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 19,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fluidheater.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fluidheater.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.fluidheater.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.fluidheater.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fluidheater.name"
+    },
+    "gtpp_moleculartransformer": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 18,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_moleculartransformer.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_moleculartransformer.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_moleculartransformer.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_moleculartransformer.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_moleculartransformer.name"
+    },
+    "kuba_defc": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 17,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.kuba_defc.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.kuba_defc.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.kuba_defc.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.kuba_defc.line.l2.label"
+        },
+        {
+          "kind": "top_field",
+          "field": "special_value",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.kuba_defc.line.l3.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.kuba_defc.name"
+    },
+    "gtpp_vacfurnace": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 16,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_vacfurnace.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_vacfurnace.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_vacfurnace.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_vacfurnace.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "coil_heat",
+          "format": "comma_int",
+          "suffix_table": "coil_material",
+          "suffix_table_lookup": "ceil",
+          "labelKey": "spec.gregtech.handler.gtpp_vacfurnace.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_vacfurnace.line.l3.suffix",
+          "suffixTableFormatKey": "spec.gregtech.handler.gtpp_vacfurnace.line.l3.suffixTableFormat"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_vacfurnace.name"
+    },
+    "gg_preciseassembler": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 16,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gg_preciseassembler.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gg_preciseassembler.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gg_preciseassembler.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gg_preciseassembler.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "precise_assembler_casing_tier",
+          "expr": "value",
+          "labelKey": null,
+          "valueTemplateKey": "spec.gregtech.template.requiresMkMechanicalBlock"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gg_preciseassembler.name"
+    },
+    "nanoforge": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 12,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.nanoforge.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.nanoforge.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.nanoforge.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.nanoforge.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "nano_forge_tier",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.nanoforge.line.l3.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.nanoforge.name"
+    },
+    "gg_neutronactivator": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 12,
+      "lines": [
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gg_neutronactivator.line.l0.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "nke_range",
+          "expr": "value % 10000",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.gg_neutronactivator.line.l1.label",
+          "suffixKey": "spec.gregtech.handler.gg_neutronactivator.line.l1.suffix"
+        },
+        {
+          "kind": "metadata",
+          "key": "nke_range",
+          "expr": "floor(value / 10000)",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.gg_neutronactivator.line.l2.label",
+          "suffixKey": "spec.gregtech.handler.gg_neutronactivator.line.l2.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gg_neutronactivator.name"
+    },
+    "gtpp_flotationcell": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 12,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_flotationcell.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_flotationcell.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_flotationcell.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_flotationcell.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_flotationcell.name"
+    },
+    "bw_fuel_acidgen": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 12,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.bw_fuel_acidgen.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.bw_fuel_acidgen.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.bw_fuel_acidgen.name"
+    },
+    "gg_fuel_naquadahreactor": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 9,
+      "lines": [
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gg_fuel_naquadahreactor.line.l0.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "lng_basic_output",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.gg_fuel_naquadahreactor.line.l1.label",
+          "suffixKey": "spec.gregtech.handler.gg_fuel_naquadahreactor.line.l1.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gg_fuel_naquadahreactor.name"
+    },
+    "gg_naquadahrefinery": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 9,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gg_naquadahrefinery.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gg_naquadahrefinery.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gg_naquadahrefinery.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gg_naquadahrefinery.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "nfr_coil_tier",
+          "expr": "value",
+          "labelKey": null,
+          "valueTemplateKey": "spec.gregtech.template.requiredTierCoil"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gg_naquadahrefinery.name"
+    },
+    "gtpp_nuclearsalt": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 8,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_nuclearsalt.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_nuclearsalt.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_nuclearsalt.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_nuclearsalt.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_nuclearsalt.name"
+    },
+    "transcendentplasmaforge": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 8,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "expr": "value * (ctx.metadata.eu_multiplier ? ctx.metadata.eu_multiplier : 10)",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.transcendentplasmaforge.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.transcendentplasmaforge.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(value * (ctx.metadata.eu_multiplier ? ctx.metadata.eu_multiplier : 10))",
+            "labelKey": "spec.gregtech.handler.transcendentplasmaforge.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "tier(value * (ctx.metadata.eu_multiplier ? ctx.metadata.eu_multiplier : 10))"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.transcendentplasmaforge.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.transcendentplasmaforge.name"
+    },
+    "tt_fog_upgradecost": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 7,
+      "lines": [
+        {
+          "kind": "metadata",
+          "key": "fog_plasma_upgrade_name_short",
+          "color_code": "§9§n§l",
+          "labelKey": null
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.tt_fog_upgradecost.name"
+    },
+    "rockbreaker": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 6,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.rockbreaker.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.rockbreaker.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.rockbreaker.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.rockbreaker.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.rockbreaker.name"
+    },
+    "gtpp_matterfab": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 6,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_matterfab.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_matterfab.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_matterfab.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_matterfab.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_matterfab.name"
+    },
+    "gtpp_reactorproc": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 6,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_reactorproc.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_reactorproc.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_reactorproc.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_reactorproc.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_reactorproc.name"
+    },
+    "gtpp_fuel_rtg": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 5,
+      "lines": [
+        {
+          "kind": "metadata",
+          "key": "rtg_output_eut",
+          "expr": "comma(value)",
+          "format": "as_string",
+          "labelKey": "spec.gregtech.handler.gtpp_fuel_rtg.line.l0.label",
+          "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+          "templateArgs": {
+            "tier": "value <= 8 ? 'ULV' : value <= 32 ? 'LV' : value <= 128 ? 'MV' : value <= 512 ? 'HV' : value <= 2048 ? 'EV' : value <= 8192 ? 'IV' : value <= 32768 ? 'LuV' : value <= 131072 ? 'ZPM' : value <= 524288 ? 'UV' : 'UHV'"
+          }
+        },
+        {
+          "kind": "metadata",
+          "key": "rtg_duration_in_days",
+          "scale": 365,
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.gtpp_fuel_rtg.line.l1.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_fuel_rtg.line.l1.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_fuel_rtg.name"
+    },
+    "printer": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 5,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.printer.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.printer.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.printer.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.printer.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.printer.name"
+    },
+    "gtpp_fissionfuel": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 5,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_fissionfuel.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_fissionfuel.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_fissionfuel.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_fissionfuel.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_fissionfuel.name"
+    },
+    "fuel_hot": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 5,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fuel_hot.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fuel_hot.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fuel_hot.name"
+    },
+    "lanth_sourcechamber": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 4,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.lanth_sourcechamber.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.lanth_sourcechamber.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.lanth_sourcechamber.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "metadata_json",
+          "key": "source_chamber_metadata",
+          "expr": "'<=' || value.maxEnergy",
+          "labelKey": "spec.gregtech.handler.lanth_sourcechamber.line.l2.label",
+          "suffixKey": "spec.gregtech.handler.lanth_sourcechamber.line.l2.suffix"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "source_chamber_metadata",
+          "expr": "value.focus",
+          "labelKey": "spec.gregtech.handler.lanth_sourcechamber.line.l3.label"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "source_chamber_metadata",
+          "expr": "value.rate",
+          "labelKey": "spec.gregtech.handler.lanth_sourcechamber.line.l4.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.lanth_sourcechamber.name"
+    },
+    "gtpp_thermalboiler": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 4,
+      "lines": [
+        {
+          "kind": "duration",
+          "format": "duration_ticks",
+          "labelKey": "spec.gregtech.handler.gtpp_thermalboiler.line.l0.label"
+        },
+        {
+          "kind": "text",
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.gtpp_thermalboiler.line.l1.literal"
+        },
+        {
+          "kind": "text",
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.gtpp_thermalboiler.line.l2.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_thermalboiler.name"
+    },
+    "gtpp_fuel_rocket": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 4,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_fuel_rocket.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_fuel_rocket.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_fuel_rocket.name"
+    },
+    "purificationozonation": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 4,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.purificationozonation.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.purificationozonation.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.purificationozonation.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.purificationozonation.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.purificationozonation.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.purificationozonation.line.l3.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.purificationozonation.name"
+    },
+    "isotopedecay": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 4,
+      "lines": [
+        {
+          "kind": "metadata",
+          "key": "decay-type",
+          "labelKey": "spec.gregtech.handler.isotopedecay.line.l0.label",
+          "valueKeyExpr": "lookup(tables.decay_type, value) == '' ? value : lookup(tables.decay_type, value)"
+        },
+        {
+          "kind": "metadata",
+          "key": "half-life",
+          "format": "duration_auto_unit",
+          "labelKey": "spec.gregtech.handler.isotopedecay.line.l1.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "half-life",
+          "expr": "64 / value",
+          "format": "scientific",
+          "labelKey": "spec.gregtech.handler.isotopedecay.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.isotopedecay.name"
+    },
+    "fuel_extreme_diesel": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 3,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fuel_extreme_diesel.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fuel_extreme_diesel.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fuel_extreme_diesel.name"
+    },
+    "gtpp_spargetower": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 3,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_spargetower.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_spargetower.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_spargetower.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_spargetower.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "sparge_max_byproduct",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.gtpp_spargetower.line.l3.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_spargetower.name"
+    },
+    "gtpp_lftr": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 3,
+      "lines": [
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_lftr.line.l0.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "lftr_output_power",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.gtpp_lftr.line.l1.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_lftr.line.l1.suffix"
+        },
+        {
+          "kind": "metadata",
+          "key": "lftr_output_power",
+          "expr": "value * ctx.duration_ticks",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_lftr.line.l2.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_lftr.line.l2.suffix"
+        },
+        {
+          "kind": "metadata",
+          "key": "lftr_output_power",
+          "expr": "value * ctx.duration_ticks * 4",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_lftr.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_lftr.line.l3.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_lftr.name"
+    },
+    "gtpp_fishpond": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 3,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_fishpond.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_fishpond.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_fishpond.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_fishpond.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_fishpond.name"
+    },
+    "bw_htgr": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 3,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.bw_htgr.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.bw_htgr.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.bw_htgr.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.bw_htgr.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.bw_htgr.name"
+    },
+    "massfab": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 2,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.massfab.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.massfab.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "split": [
+            {
+              "expr": "ctx.voltage",
+              "format": "comma_int",
+              "labelKey": "spec.gregtech.handler.massfab.line.l1.split.s0.label",
+              "suffixKey": "spec.gregtech.handler.massfab.line.l1.split.s0.suffix"
+            },
+            {
+              "expr": "comma(int(ctx.voltage / ctx.amperage))",
+              "format": "as_string",
+              "labelKey": "spec.gregtech.handler.massfab.line.l1.split.s1.label",
+              "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+              "templateArgs": {
+                "tier": "ctx.voltage_tier"
+              }
+            },
+            {
+              "expr": "ctx.amperage",
+              "format": "direct",
+              "labelKey": "spec.gregtech.handler.massfab.line.l1.split.s2.label",
+              "suffixKey": "spec.gregtech.handler.massfab.line.l1.split.s2.suffix"
+            }
+          ]
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.massfab.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.massfab.name"
+    },
+    "purificationparticleextraction": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 2,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.purificationparticleextraction.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.purificationparticleextraction.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.purificationparticleextraction.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.purificationparticleextraction.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.purificationparticleextraction.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.purificationparticleextraction.line.l3.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.purificationparticleextraction.name"
+    },
+    "gtpp_coldtrap": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 2,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.gtpp_coldtrap.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.gtpp_coldtrap.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.gtpp_coldtrap.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.gtpp_coldtrap.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_coldtrap.name"
+    },
+    "fuel_naquadah_mk5": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 2,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fuel_naquadah_mk5.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fuel_naquadah_mk5.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fuel_naquadah_mk5.name"
+    },
+    "tt_fog_exotic": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 2,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.tt_fog_exotic.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.tt_fog_exotic.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.tt_fog_exotic.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.tt_fog_exotic.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.tt_fog_exotic.name"
+    },
+    "amplifiers": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 2,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.amplifiers.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.amplifiers.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.amplifiers.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.amplifiers.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.amplifiers.name"
+    },
+    "fuel_naquadah_mk4": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 2,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fuel_naquadah_mk4.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fuel_naquadah_mk4.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fuel_naquadah_mk4.name"
+    },
+    "fuel_naquadah_mk1": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 2,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fuel_naquadah_mk1.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fuel_naquadah_mk1.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fuel_naquadah_mk1.name"
+    },
+    "fuel_naquadah_mk3": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 2,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fuel_naquadah_mk3.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fuel_naquadah_mk3.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fuel_naquadah_mk3.name"
+    },
+    "spaceproject": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 2,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.spaceproject.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.spaceproject.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.spaceproject.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.spaceproject.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.spaceproject.name"
+    },
+    "fuel_naquadah_mk2": {
+      "recipe_kind": "FUEL",
+      "recipe_count": 2,
+      "lines": [
+        {
+          "kind": "fuel_heat",
+          "scale": 1000,
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.fuel_naquadah_mk2.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.fuel_naquadah_mk2.line.l0.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.fuel_naquadah_mk2.name"
+    },
+    "purificationflocculation": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.purificationflocculation.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.purificationflocculation.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.purificationflocculation.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.purificationflocculation.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.purificationflocculation.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.purificationflocculation.line.l3.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.purificationflocculation.name"
+    },
+    "purificationdegasifier": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.purificationdegasifier.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.purificationdegasifier.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.purificationdegasifier.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.purificationdegasifier.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.purificationdegasifier.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.purificationdegasifier.line.l3.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.purificationdegasifier.name"
+    },
+    "purificationuvtreatment": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.purificationuvtreatment.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.purificationuvtreatment.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.purificationuvtreatment.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.purificationuvtreatment.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.purificationuvtreatment.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.purificationuvtreatment.line.l3.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.purificationuvtreatment.name"
+    },
+    "purificationclarifier": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.purificationclarifier.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.purificationclarifier.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.purificationclarifier.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.purificationclarifier.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.purificationclarifier.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.purificationclarifier.line.l3.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.purificationclarifier.name"
+    },
+    "purificationplasmaheating": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.purificationplasmaheating.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.purificationplasmaheating.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.purificationplasmaheating.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.purificationplasmaheating.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.purificationplasmaheating.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.purificationplasmaheating.line.l3.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.purificationplasmaheating.name"
+    },
+    "purificationphadjustment": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1,
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.purificationphadjustment.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.purificationphadjustment.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.purificationphadjustment.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.purificationphadjustment.line.l2.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "format": "direct",
+          "labelKey": "spec.gregtech.handler.purificationphadjustment.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.purificationphadjustment.line.l3.suffix"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.purificationphadjustment.name"
+    },
+    "gtpp_solartower": {
+      "recipe_kind": "PROCESSING",
+      "recipe_count": 1,
+      "lines": [
+        {
+          "kind": "text",
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.gtpp_solartower.line.l0.literal"
+        },
+        {
+          "kind": "text",
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.gtpp_solartower.line.l1.literal"
+        },
+        {
+          "kind": "text",
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.gtpp_solartower.line.l2.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.gtpp_solartower.name"
+    }
+  }
+}

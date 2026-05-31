@@ -1,0 +1,2710 @@
+{
+  "spec": {
+    "gregtech": {
+      "template": {
+        "voltageWithTier": "{value} EU/t ({tier})",
+        "requiresMkModule": "需要MK-{value}模块",
+        "requiresMkMechanicalBlock": "需要MK-{value}机械方块",
+        "requiredTierCoil": "要求等级 {value} 线圈",
+        "ic2Nuclear": {
+          "neutronPulses": "中子脉冲：{value}",
+          "heatBonusStep": "每{step}反应堆壳热量",
+          "speedBoost": "提升速度{value}00%"
+        }
+      },
+      "value": {
+        "fogPlasmaTier": {
+          "t4t5": "T4-T5",
+          "exotic": "Exotic",
+          "t1t3": "T1-T3"
+        },
+        "pcbFactoryBioUpgrade": {
+          "bioHatch": "生物仓"
+        },
+        "ic2Nuclear": {
+          "model": {
+            "mox": "MOX模型",
+            "uranium": "铀模型"
+          },
+          "breeder": {
+            "neutronReflecting": "中子反射增殖反应堆",
+            "thermal": "热中性增殖反应堆"
+          }
+        }
+      },
+      "prefix": {
+        "ic2Nuclear": {
+          "heat": "热量：",
+          "energy": "能量：",
+          "requiredPulses": "所需脉冲数："
+        }
+      },
+      "format": {
+        "duration": {
+          "ticks": "{value} tick",
+          "seconds": "{value} 秒",
+          "autoSeconds": "{value}秒",
+          "autoMinutes": "{value}分",
+          "autoHours": "{value}时",
+          "autoDays": "{value}天"
+        },
+        "bool": {
+          "yes": "Yes",
+          "no": "No"
+        }
+      },
+      "largeBoiler": {
+        "header": "燃烧时间（秒）",
+        "bronze": "青铜锅炉",
+        "steel": "钢制锅炉",
+        "titanium": "钛制锅炉",
+        "tungstensteel": "钨钢锅炉",
+        "disabled": "禁止使用"
+      },
+      "handler": {
+        "tic_bolt_molding": {
+          "name": "匠魂弩箭固化",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "assembler": {
+          "name": "组装机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "literal": "需要超净间"
+            }
+          }
+        },
+        "macerator_recycling": {
+          "name": "粉碎机回收",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "fluidextractor_recycling": {
+          "name": "流体提取机回收",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "tic_part_extruding": {
+          "name": "匠魂部件压模",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "alloysmelter_recycling": {
+          "name": "合金炉回收",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "arcfurnace_recycling": {
+          "name": "电弧炉回收",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "split": {
+                "s0": {
+                  "label": "使用",
+                  "suffix": " EU/t "
+                },
+                "s1": {
+                  "label": "电压"
+                },
+                "s2": {
+                  "label": "电流",
+                  "suffix": " A"
+                }
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "cutter": {
+          "name": "板材切割机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "literal": "需要超净间"
+            }
+          }
+        },
+        "macerator": {
+          "name": "粉碎机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "fluidsolidifier": {
+          "name": "流体固化器",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "hammer": {
+          "name": "锻造锤",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "fluidcanner": {
+          "name": "流体灌装机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "extruder": {
+          "name": "压模机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "bender": {
+          "name": "卷板机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "packager": {
+          "name": "打包机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "fluidextraction": {
+          "name": "流体提取机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "laserengraver": {
+          "name": "激光蚀刻机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "literal": "需要超净间"
+            }
+          }
+        },
+        "chemicalreactor": {
+          "name": "化学反应釜",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "literal": "需要超净间"
+            }
+          }
+        },
+        "centrifuge": {
+          "name": "离心机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "multiblockcentrifuge": {
+          "name": "工业离心机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "multiblockchemicalReactor": {
+          "name": "大型化学反应釜",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "literal": "需要超净间"
+            }
+          }
+        },
+        "lathe": {
+          "name": "车床",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "wiremill": {
+          "name": "线材轧机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "tt_fog_molten": {
+          "name": "太阳射流融化核心",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "热容",
+              "suffix": " K",
+              "suffixTableFormat": " ({0})"
+            }
+          }
+        },
+        "blastfurnace": {
+          "name": "工业高炉",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "literal": "需要超净间"
+            },
+            "l4": {
+              "label": "热容",
+              "suffix": " K",
+              "suffixTableFormat": " ({0})"
+            }
+          }
+        },
+        "alloysmelter_molding": {
+          "name": "合金炉熔铸",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gtpp_cokeoven": {
+          "name": "焦炉",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "pyrolyse": {
+          "name": "热解炉",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "compressor": {
+          "name": "压缩机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "压缩等级"
+            }
+          }
+        },
+        "implosion": {
+          "name": "聚爆压缩机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "mixer": {
+          "name": "搅拌机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "multiblockmixer": {
+          "name": "工业搅拌机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "canner": {
+          "name": "装罐机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gtpp_simplewasher": {
+          "name": "简易洗矿池",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "chemicalbath": {
+          "name": "化学浸洗机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "alloysmelter": {
+          "name": "合金炉",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "thermalcentrifuge": {
+          "name": "热力离心机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "split": {
+                "s0": {
+                  "label": "使用",
+                  "suffix": " EU/t "
+                },
+                "s1": {
+                  "label": "电压"
+                },
+                "s2": {
+                  "label": "电流",
+                  "suffix": " A"
+                }
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "orewasher": {
+          "name": "洗矿机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "circuitassembler": {
+          "name": "电路组装机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "literal": "需要超净间"
+            }
+          }
+        },
+        "distillery": {
+          "name": "蒸馏室",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "assemblyline": {
+          "name": "装配线加工",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "brewing": {
+          "name": "酿造室",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "primitiveblast": {
+          "name": "原始高炉",
+          "line": {
+            "l0": {
+              "label": "时间"
+            }
+          }
+        },
+        "formingpress": {
+          "name": "冲压机床",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "electrolyzer": {
+          "name": "电解机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "unpackager": {
+          "name": "解包器",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "extractor": {
+          "name": "提取机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "multiblockelectrolyzer": {
+          "name": "工业电解机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "vacuumfreezer": {
+          "name": "真空冷冻机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "autoclave": {
+          "name": "高压釜",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "literal": "需要超净间"
+            },
+            "l4": {
+              "literal": "需要低重力环境"
+            }
+          }
+        },
+        "bw_eic": {
+          "name": "电动聚爆压缩机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "tt_researchstation": {
+          "name": "研究站",
+          "line": {
+            "l0": {
+              "label": "最多消耗",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "消耗功率"
+              }
+            },
+            "l2": {
+              "label": "算力"
+            },
+            "l3": {
+              "label": "最小算力输入",
+              "suffix": " /s"
+            }
+          }
+        },
+        "abs_non_alloy": {
+          "name": "合金冶炼炉非合金配方",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "scanner": {
+          "name": "扫描仪",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "literal": "装配线配方扫描"
+            }
+          }
+        },
+        "gtpp_cryofreezer": {
+          "name": "凛冰冷冻机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gtpp_chemicalplant": {
+          "name": "化工厂",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "等级",
+              "suffixTableFormat": " - {0}"
+            }
+          }
+        },
+        "gtpp_treefarm": {
+          "name": "原木拟生场",
+          "line": {
+            "l0": {
+              "label": "时间"
+            },
+            "l1": {
+              "literal": "进一步促进产出"
+            },
+            "l2": {
+              "literal": "按机器电压等级"
+            },
+            "l3": {
+              "literal": "和工具类型"
+            }
+          }
+        },
+        "ig_spacemining": {
+          "name": "太空采矿",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l4": {
+              "label": "距离"
+            },
+            "l5": {
+              "label": "大小"
+            },
+            "l6": {
+              "label": "最小算力输入",
+              "suffix": " /s"
+            },
+            "l7": {
+              "label": "权重"
+            }
+          }
+        },
+        "tt_fog_plasma": {
+          "name": "太阳热能等离子制造机",
+          "line": {
+            "l0": {
+              "label": "总耗电",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "消耗功率"
+              }
+            },
+            "l2": {
+              "label": "耗时"
+            },
+            "l3": {
+              "label": "多步骤等离子体"
+            },
+            "l4": {
+              "label": "聚变等级"
+            }
+          }
+        },
+        "gtpp_milling": {
+          "name": "研磨",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "polarizer": {
+          "name": "两极磁化机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "forgehammer_recycling": {
+          "name": "锻造锤回收",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "distillationtower": {
+          "name": "蒸馏塔",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gg_componentassembly": {
+          "name": "部件装配线",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "外壳等级"
+            }
+          }
+        },
+        "fuel_plasma": {
+          "name": "等离子发电机燃料",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "sifter": {
+          "name": "筛选机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gg_extremeheatexchanger": {
+          "name": "超级热交换机",
+          "line": {
+            "l0": {
+              "label": "最大热流体输入",
+              "suffix": " L/s"
+            },
+            "l1": {
+              "label": "最大蒸馏水输入",
+              "suffix": " L/s"
+            },
+            "l2": {
+              "label": "阈值",
+              "suffix": " L/s"
+            }
+          }
+        },
+        "plasmaarcfurnace": {
+          "name": "等离子电弧炉",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "lanth_targetchamber": {
+          "name": "高能束流聚焦对撞靶室",
+          "line": {
+            "l0": {
+              "split": {
+                "s0": {
+                  "label": "使用",
+                  "suffix": " EU/t "
+                },
+                "s1": {
+                  "label": "电压"
+                },
+                "s2": {
+                  "label": "电流",
+                  "suffix": " A"
+                }
+              }
+            },
+            "l1": {
+              "label": "能量",
+              "suffix": " eV"
+            },
+            "l2": {
+              "label": "聚焦"
+            },
+            "l3": {
+              "label": "数量"
+            }
+          }
+        },
+        "pcbfactory": {
+          "name": "PCB工厂",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "PCB工厂等级"
+            },
+            "l4": {
+              "label": "需要升级"
+            }
+          }
+        },
+        "bw_radhatch": {
+          "name": "放射仓材料列表",
+          "line": {
+            "l0": {
+              "label": "辐射剂量",
+              "suffix": " Sv"
+            },
+            "l1": {
+              "label": "质量",
+              "suffix": " kg"
+            },
+            "l2": {
+              "label": "时间",
+              "suffix": " s"
+            }
+          }
+        },
+        "fuel_magic": {
+          "name": "魔法能源转换器燃料",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "replicator": {
+          "name": "复制机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gtpp_multidehydrator": {
+          "name": "工业脱水机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gtpp_dehydrator": {
+          "name": "脱水机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "cracking": {
+          "name": "石油裂化机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "plasmaforge": {
+          "name": "超维度等离子锻炉",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "热容",
+              "suffix": " K",
+              "suffixTableFormat": " ({0})"
+            }
+          }
+        },
+        "gtpp_abs": {
+          "name": "合金冶炼炉",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "bw_cal": {
+          "name": "电路装配线",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "neutroniumcompressor": {
+          "name": "中子态素压缩机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "压缩等级"
+            }
+          }
+        },
+        "fusion": {
+          "name": "核聚变反应堆",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "启动能量",
+              "suffix": " EU"
+            }
+          }
+        },
+        "slicer": {
+          "name": "食材切片机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "literal": "需要超净间"
+            }
+          }
+        },
+        "fuel_large_boiler": {
+          "name": "大型锅炉",
+          "line": {
+            "l1": {
+              "label": "时间"
+            }
+          }
+        },
+        "fermenting": {
+          "name": "发酵槽",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "solarfactory": {
+          "name": "太阳能板制造厂",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "所需多方块等级"
+            }
+          }
+        },
+        "electromagneticseparator": {
+          "name": "电磁离析机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "tt_eyeofharmony": {
+          "name": "鸿蒙之眼",
+          "line": {
+            "l0": {
+              "label": "时间"
+            },
+            "l1": {
+              "label": "Hydrogen",
+              "suffix": " L"
+            },
+            "l2": {
+              "label": "Helium",
+              "suffix": " L"
+            },
+            "l3": {
+              "label": "Spacetime Tier"
+            },
+            "l4": {
+              "label": "EU Output",
+              "suffix": " EU"
+            },
+            "l5": {
+              "label": "EU Input",
+              "suffix": " EU"
+            },
+            "l6": {
+              "label": "Base Recipe Chance",
+              "suffix": "%"
+            },
+            "l7": {
+              "label": "Recipe Energy Efficiency",
+              "suffix": "%"
+            }
+          }
+        },
+        "ggfab_toolcast": {
+          "name": "工具铸造机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "lanth_digester": {
+          "name": "煮解池",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "热容",
+              "suffix": " K",
+              "suffixTableFormat": " ({0})"
+            }
+          }
+        },
+        "lanth_disstank": {
+          "name": "溶解罐",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "比例"
+            }
+          }
+        },
+        "ic2nuclear": {
+          "name": "IC2核反应堆"
+        },
+        "gtpp_qft": {
+          "name": "量子操纵者",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "聚焦等级"
+            }
+          }
+        },
+        "fuel_gas_turbine": {
+          "name": "燃气轮机燃料",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "quantumcomputer": {
+          "name": "量子计算机",
+          "line": {
+            "l0": {
+              "label": "加热常数"
+            },
+            "l1": {
+              "label": "冷却常数"
+            },
+            "l2": {
+              "label": "算力"
+            },
+            "l3": {
+              "label": "最大热量"
+            }
+          }
+        },
+        "ig_spaceassembler": {
+          "name": "太空组装机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "fuel_diesel": {
+          "name": "内燃发电机燃料",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "gtpp_fuel_semifluid": {
+          "name": "半流质发电机燃料",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "arcfurnace": {
+          "name": "电弧炉",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "split": {
+                "s0": {
+                  "label": "使用",
+                  "suffix": " EU/t "
+                },
+                "s1": {
+                  "label": "电压"
+                },
+                "s2": {
+                  "label": "电流",
+                  "suffix": " A"
+                }
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gtpp_cyclotron": {
+          "name": "COMET - 紧凑式回旋加速器",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "fluidheater": {
+          "name": "流体加热器",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gtpp_moleculartransformer": {
+          "name": "分子重组仪",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "kuba_defc": {
+          "name": "龙研聚合装置",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "外壳等级"
+            }
+          }
+        },
+        "gtpp_vacfurnace": {
+          "name": "真空干燥炉",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "热容",
+              "suffix": " K",
+              "suffixTableFormat": " ({0})"
+            }
+          }
+        },
+        "gg_preciseassembler": {
+          "name": "精密组装机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "nanoforge": {
+          "name": "纳米锻炉",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "等级"
+            }
+          }
+        },
+        "gg_neutronactivator": {
+          "name": "中子活化器",
+          "line": {
+            "l0": {
+              "label": "时间"
+            },
+            "l1": {
+              "label": "最低中子动能",
+              "suffix": " MeV"
+            },
+            "l2": {
+              "label": "最高中子动能",
+              "suffix": " MeV"
+            }
+          }
+        },
+        "gtpp_flotationcell": {
+          "name": "工业浮选机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "bw_fuel_acidgen": {
+          "name": "酸性发电机",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "gg_fuel_naquadahreactor": {
+          "name": "大型硅岩反应堆",
+          "line": {
+            "l0": {
+              "label": "时间"
+            },
+            "l1": {
+              "label": "基础输出电压",
+              "suffix": " EU/t"
+            }
+          }
+        },
+        "gg_naquadahrefinery": {
+          "name": "硅岩燃料精炼厂",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gtpp_nuclearsalt": {
+          "name": "反应堆熔盐加工厂",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "transcendentplasmaforge": {
+          "name": "超维度等离子搅拌机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "平均"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "tt_fog_upgradecost": {
+          "name": "神锻升级"
+        },
+        "rockbreaker": {
+          "name": "碎石机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gtpp_matterfab": {
+          "name": "质量发生器",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gtpp_reactorproc": {
+          "name": "反应堆处理单元",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gtpp_fuel_rtg": {
+          "name": "放射性同位素温差发电机",
+          "line": {
+            "l0": {
+              "label": "使用"
+            },
+            "l1": {
+              "label": "燃烧时间",
+              "suffix": " Minecraft Days"
+            }
+          }
+        },
+        "printer": {
+          "name": "打印机",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "gtpp_fissionfuel": {
+          "name": "反应堆燃料加工厂",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "fuel_hot": {
+          "name": "火力发电机燃料",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "lanth_sourcechamber": {
+          "name": "高能粒子辐射激发源室",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "能量",
+              "suffix": " keV"
+            },
+            "l3": {
+              "label": "聚焦"
+            },
+            "l4": {
+              "label": "速率"
+            }
+          }
+        },
+        "gtpp_thermalboiler": {
+          "name": "地热锅炉",
+          "line": {
+            "l0": {
+              "label": "时间"
+            },
+            "l1": {
+              "literal": "Steam output shown"
+            },
+            "l2": {
+              "literal": "at maximum efficiency."
+            }
+          }
+        },
+        "gtpp_fuel_rocket": {
+          "name": "火箭引擎燃料",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "purificationozonation": {
+          "name": "臭氧化",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "基础成功率",
+              "suffix": "%"
+            }
+          }
+        },
+        "isotopedecay": {
+          "name": "同位素衰变",
+          "line": {
+            "l0": {
+              "label": "衰变类型"
+            },
+            "l1": {
+              "label": "半衰期"
+            },
+            "l2": {
+              "label": "生产/堆叠/秒"
+            }
+          }
+        },
+        "fuel_extreme_diesel": {
+          "name": "极限内燃引擎燃料",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "gtpp_spargetower": {
+          "name": "液态氟钍反应堆气体喷射",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "最大副产物"
+            }
+          }
+        },
+        "gtpp_lftr": {
+          "name": "液态氟钍反应堆",
+          "line": {
+            "l0": {
+              "label": "时间"
+            },
+            "l1": {
+              "label": "功率",
+              "suffix": " EU/t 每个动力仓"
+            },
+            "l2": {
+              "label": "发电",
+              "suffix": " EU"
+            },
+            "l3": {
+              "label": "总计",
+              "suffix": " EU"
+            }
+          }
+        },
+        "gtpp_fishpond": {
+          "name": "珠海-渔场",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "bw_htgr": {
+          "name": "高温气冷反应堆",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "massfab": {
+          "name": "质量发生器",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "split": {
+                "s0": {
+                  "label": "使用",
+                  "suffix": " EU/t "
+                },
+                "s1": {
+                  "label": "电压"
+                },
+                "s2": {
+                  "label": "电流",
+                  "suffix": " A"
+                }
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "purificationparticleextraction": {
+          "name": "重子完美",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "基础成功率",
+              "suffix": "%"
+            }
+          }
+        },
+        "gtpp_coldtrap": {
+          "name": "冷阱",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "fuel_naquadah_mk5": {
+          "name": "硅岩反应堆 MkV",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "tt_fog_exotic": {
+          "name": "太阳聚变异化器",
+          "line": {
+            "l0": {
+              "label": "总耗电",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "消耗功率"
+              }
+            },
+            "l2": {
+              "label": "耗时"
+            }
+          }
+        },
+        "amplifiers": {
+          "name": "UU增幅液生产器",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "fuel_naquadah_mk4": {
+          "name": "硅岩反应堆 MkIV",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "fuel_naquadah_mk1": {
+          "name": "硅岩反应堆 MkI",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "fuel_naquadah_mk3": {
+          "name": "硅岩反应堆 MkIII",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "spaceproject": {
+          "name": "太空项目",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "fuel_naquadah_mk2": {
+          "name": "硅岩反应堆 MkII",
+          "line": {
+            "l0": {
+              "label": "燃料热值",
+              "suffix": " EU"
+            }
+          }
+        },
+        "purificationflocculation": {
+          "name": "絮凝",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "基础成功率",
+              "suffix": "%"
+            }
+          }
+        },
+        "purificationdegasifier": {
+          "name": "脱气",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "基础成功率",
+              "suffix": "%"
+            }
+          }
+        },
+        "purificationuvtreatment": {
+          "name": "高能激光处理",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "基础成功率",
+              "suffix": "%"
+            }
+          }
+        },
+        "purificationclarifier": {
+          "name": "澄清器",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "基础成功率",
+              "suffix": "%"
+            }
+          }
+        },
+        "purificationplasmaheating": {
+          "name": "温度波动",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "基础成功率",
+              "suffix": "%"
+            }
+          }
+        },
+        "purificationphadjustment": {
+          "name": "pH中和",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            },
+            "l3": {
+              "label": "基础成功率",
+              "suffix": "%"
+            }
+          }
+        },
+        "gtpp_solartower": {
+          "name": "太阳能塔",
+          "line": {
+            "l0": {
+              "literal": "太阳能加热环增益等级"
+            },
+            "l1": {
+              "literal": "T = 2 ^ (环数 - 1)"
+            },
+            "l2": {
+              "literal": "输入数量 = 1000 x T"
+            }
+          }
+        }
+      },
+      "suffix": {
+        "euPerTick": " EU/t"
+      },
+      "table": {
+        "tier_name": {
+          "k_0": "ULV",
+          "k_1": "LV",
+          "k_2": "MV",
+          "k_3": "HV",
+          "k_4": "EV",
+          "k_5": "IV",
+          "k_6": "LuV",
+          "k_7": "ZPM",
+          "k_8": "UV",
+          "k_9": "UHV",
+          "k_10": "UEV",
+          "k_11": "UIV",
+          "k_12": "UMV",
+          "k_13": "UXV",
+          "k_14": "MAX"
+        },
+        "coil_material": {
+          "k_1801": "白铜",
+          "k_2701": "坎塔尔合金",
+          "k_3601": "镍铬合金",
+          "k_4501": "钛铂钒",
+          "k_5401": "高速钢-G",
+          "k_6301": "高速钢-S",
+          "k_7201": "硅岩",
+          "k_8101": "硅岩合金",
+          "k_9001": "三元金属",
+          "k_9901": "通流琥珀金",
+          "k_10801": "觉醒龙锭",
+          "k_11701": "无尽",
+          "k_12601": "海珀珍",
+          "k_13501": "永恒",
+          "star": "永恒+"
+        },
+        "chemplant_casing": {
+          "k_0": "青铜",
+          "k_1": "钢",
+          "k_2": "铝",
+          "k_3": "不锈钢",
+          "k_4": "钛",
+          "k_5": "钨钢",
+          "k_6": "劳伦姆合金",
+          "k_7": "博特姆合金"
+        },
+        "eoh_spacetime_fancy": {
+          "k_0": "Crude",
+          "k_1": "Primitive",
+          "k_2": "Stable",
+          "k_3": "Advanced",
+          "k_4": "Superb",
+          "k_5": "Exotic",
+          "k_6": "Perfect",
+          "k_7": "Tipler",
+          "k_8": "Gallifreyan"
+        },
+        "decay_type": {
+          "Unknown": "未知",
+          "Alpha": "α衰变",
+          "SpontaneousFission": "自发裂变",
+          "Cluster": "簇衰变",
+          "AlphaTransfer": "α转移",
+          "BetaMinus": "β-衰变",
+          "BetaPlus": "β+衰变"
+        }
+      }
+    }
+  }
+}
