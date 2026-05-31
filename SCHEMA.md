@@ -1,5 +1,7 @@
 # GT Recipe Display Spec v2
 
+Language: [English](SCHEMA.md) | [中文](SCHEMA.zh_CN.md)
+
 This document is the source-of-truth contract for GregTech recipe metadata
 display specs.
 
