@@ -3503,6 +3503,13 @@
           "kind": "duration",
           "label": "时间",
           "format": "duration_seconds"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "label": "基础成功率",
+          "format": "direct",
+          "suffix": "%"
         }
       ]
     },
@@ -3724,6 +3731,13 @@
           "kind": "duration",
           "label": "时间",
           "format": "duration_seconds"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "label": "基础成功率",
+          "format": "direct",
+          "suffix": "%"
         }
       ]
     },
@@ -3919,6 +3933,13 @@
           "kind": "duration",
           "label": "时间",
           "format": "duration_seconds"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "label": "基础成功率",
+          "format": "direct",
+          "suffix": "%"
         }
       ]
     },
@@ -3944,6 +3965,13 @@
           "kind": "duration",
           "label": "时间",
           "format": "duration_seconds"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "label": "基础成功率",
+          "format": "direct",
+          "suffix": "%"
         }
       ]
     },
@@ -3969,6 +3997,13 @@
           "kind": "duration",
           "label": "时间",
           "format": "duration_seconds"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "label": "基础成功率",
+          "format": "direct",
+          "suffix": "%"
         }
       ]
     },
@@ -3994,6 +4029,13 @@
           "kind": "duration",
           "label": "时间",
           "format": "duration_seconds"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "label": "基础成功率",
+          "format": "direct",
+          "suffix": "%"
         }
       ]
     },
@@ -4019,6 +4061,13 @@
           "kind": "duration",
           "label": "时间",
           "format": "duration_seconds"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "label": "基础成功率",
+          "format": "direct",
+          "suffix": "%"
         }
       ]
     },
@@ -4044,6 +4093,13 @@
           "kind": "duration",
           "label": "时间",
           "format": "duration_seconds"
+        },
+        {
+          "kind": "metadata",
+          "key": "purification_plant_base_chance",
+          "label": "基础成功率",
+          "format": "direct",
+          "suffix": "%"
         }
       ]
     },
