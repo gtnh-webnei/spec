@@ -1347,6 +1347,82 @@
             }
           }
         },
+        "bw_biolab": {
+          "name": "生物实验室",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "时间"
+            }
+          }
+        },
+        "bw_bacterialvat": {
+          "name": "细菌培养缸",
+          "line": {
+            "l0": {
+              "label": "总计",
+              "suffix": " EU"
+            },
+            "l1": {
+              "single": {
+                "label": "使用"
+              }
+            },
+            "l2": {
+              "label": "需要玻璃等级"
+            },
+            "l3": {
+              "label": "精确剂量",
+              "suffix": " Sv"
+            },
+            "l4": {
+              "label": "最小剂量",
+              "suffix": " Sv"
+            },
+            "l5": {
+              "label": "时间"
+            },
+            "l6": {
+              "literal": "需要超净间"
+            }
+          }
+        },
+        "ig_gas_siphon": {
+          "name": "行星气体钻机",
+          "line": {
+            "l0": {
+              "label": "行星"
+            },
+            "l1": {
+              "label": "深度"
+            },
+            "l2": {
+              "label": "总量"
+            }
+          }
+        },
+        "ig_space_pump_module": {
+          "name": "太空钻机",
+          "line": {
+            "l0": {
+              "label": "行星"
+            },
+            "l1": {
+              "label": "气体"
+            },
+            "l2": {
+              "label": "总量"
+            }
+          }
+        },
         "bw_radhatch": {
           "name": "放射仓材料列表",
           "line": {
@@ -2656,6 +2732,12 @@
           "k_12": "UMV",
           "k_13": "UXV",
           "k_14": "MAX"
+        },
+        "ig_planet": {
+          "jupiter": "木星",
+          "saturn": "土星",
+          "uranus": "天王星",
+          "neptune": "海王星"
         },
         "coil_material": {
           "k_1801": "白铜",

@@ -65,6 +65,12 @@
       "AlphaTransfer": "spec.gregtech.table.decay_type.AlphaTransfer",
       "BetaMinus": "spec.gregtech.table.decay_type.BetaMinus",
       "BetaPlus": "spec.gregtech.table.decay_type.BetaPlus"
+    },
+    "ig_planet": {
+      "planet.jupiter": "spec.gregtech.table.ig_planet.jupiter",
+      "planet.saturn": "spec.gregtech.table.ig_planet.saturn",
+      "planet.uranus": "spec.gregtech.table.ig_planet.uranus",
+      "planet.neptune": "spec.gregtech.table.ig_planet.neptune"
     }
   },
   "handlers": {
@@ -2297,6 +2303,141 @@
         }
       ],
       "nameKey": "spec.gregtech.handler.pcbfactory.name"
+    },
+    "bw_biolab": {
+      "recipe_kind": "PROCESSING",
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.bw_biolab.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.bw_biolab.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.bw_biolab.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.bw_biolab.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.bw_biolab.name"
+    },
+    "bw_bacterialvat": {
+      "recipe_kind": "PROCESSING",
+      "lines": [
+        {
+          "kind": "total_eu",
+          "format": "comma_long",
+          "labelKey": "spec.gregtech.handler.bw_bacterialvat.line.l0.label",
+          "suffixKey": "spec.gregtech.handler.bw_bacterialvat.line.l0.suffix"
+        },
+        {
+          "kind": "voltage_block",
+          "single": {
+            "expr": "comma(ctx.voltage)",
+            "labelKey": "spec.gregtech.handler.bw_bacterialvat.line.l1.single.label",
+            "valueTemplateKey": "spec.gregtech.template.voltageWithTier",
+            "templateArgs": {
+              "tier": "ctx.voltage_tier"
+            }
+          }
+        },
+        {
+          "kind": "metadata",
+          "key": "GLASS",
+          "valueKeyExpr": "lookup(tables.tier_name, value)",
+          "labelKey": "spec.gregtech.handler.bw_bacterialvat.line.l2.label"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "SIEVERT",
+          "expr": "value.sievert",
+          "format": "comma_int",
+          "show_if": "value.isExact == true",
+          "labelKey": "spec.gregtech.handler.bw_bacterialvat.line.l3.label",
+          "suffixKey": "spec.gregtech.handler.bw_bacterialvat.line.l3.suffix"
+        },
+        {
+          "kind": "metadata_json",
+          "key": "SIEVERT",
+          "expr": "value.sievert",
+          "format": "comma_int",
+          "show_if": "value.isExact == false",
+          "labelKey": "spec.gregtech.handler.bw_bacterialvat.line.l4.label",
+          "suffixKey": "spec.gregtech.handler.bw_bacterialvat.line.l4.suffix"
+        },
+        {
+          "kind": "duration",
+          "format": "duration_seconds",
+          "labelKey": "spec.gregtech.handler.bw_bacterialvat.line.l5.label"
+        },
+        {
+          "kind": "flag",
+          "key": "cleanroom",
+          "show_if_true": true,
+          "labelKey": null,
+          "literalKey": "spec.gregtech.handler.bw_bacterialvat.line.l6.literal"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.bw_bacterialvat.name"
+    },
+    "ig_gas_siphon": {
+      "recipe_kind": "PROCESSING",
+      "lines": [
+        {
+          "kind": "metadata",
+          "key": "planet",
+          "valueKeyExpr": "lookup(tables.ig_planet, value)",
+          "labelKey": "spec.gregtech.handler.ig_gas_siphon.line.l0.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "depth",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.ig_gas_siphon.line.l1.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "amount",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.ig_gas_siphon.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.ig_gas_siphon.name"
+    },
+    "ig_space_pump_module": {
+      "recipe_kind": "PROCESSING",
+      "lines": [
+        {
+          "kind": "metadata",
+          "key": "planet_type",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.ig_space_pump_module.line.l0.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "gas_type",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.ig_space_pump_module.line.l1.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "amount",
+          "format": "comma_int",
+          "labelKey": "spec.gregtech.handler.ig_space_pump_module.line.l2.label"
+        }
+      ],
+      "nameKey": "spec.gregtech.handler.ig_space_pump_module.name"
     },
     "bw_radhatch": {
       "recipe_kind": "PROCESSING",
