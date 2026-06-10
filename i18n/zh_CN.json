@@ -2787,6 +2787,24 @@
           "BetaPlus": "β+衰变"
         }
       }
+    },
+    "bloodmagic": {
+      "handler": {
+        "alchemy": {
+          "name": "炼金术台",
+          "line": {
+            "lp": {
+              "label": "LP 消耗"
+            },
+            "orbLevel": {
+              "label": "所需气血宝珠等级"
+            }
+          }
+        }
+      },
+      "suffix": {
+        "lp": " LP"
+      }
     }
   }
 }

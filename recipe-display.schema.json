@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://webnei/recipe-display.schema.json",
+  "title": "Recipe Display Spec",
+  "description": "Structure contract for spec/display.json. Drives IDE completion + validation. Per-mod display rules live under handlers keyed by recipe category short name; i18n keys use the spec.<mod>.* namespace.",
+  "type": "object",
+  "required": ["schema", "version", "tables", "handlers"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema": { "const": "recipe-display-spec" },
+    "version": { "const": 2 },
+    "tables": {
+      "type": "object",
+      "description": "Shared lookup tables. Keys are raw values; values are i18n keys.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": { "type": "string" }
+      }
+    },
+    "handlers": {
+      "type": "object",
+      "description": "Keyed by recipe category short name (category id without the plugin prefix).",
+      "additionalProperties": { "$ref": "#/$defs/handler" }
+    }
+  },
+  "$defs": {
+    "handler": {
+      "type": "object",
+      "required": ["lines"],
+      "additionalProperties": false,
+      "properties": {
+        "nameKey": { "type": "string" },
+        "recipe_kind": { "enum": ["PROCESSING", "FUEL"] },
+        "recipe_count": { "type": "integer" },
+        "lines": { "type": "array", "items": { "$ref": "#/$defs/line" } }
+      }
+    },
+    "line": {
+      "type": "object",
+      "required": ["kind"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "total_eu",
+            "voltage_block",
+            "duration",
+            "fuel_heat",
+            "large_boiler_table",
+            "metadata",
+            "metadata_json",
+            "flag",
+            "text",
+            "special_item",
+            "fluid_input",
+            "top_field"
+          ]
+        },
+        "key": { "type": "string" },
+        "list_index": { "type": "integer" },
+        "field": { "type": "string" },
+        "labelKey": { "type": ["string", "null"] },
+        "expr": { "type": "string" },
+        "valueKeyExpr": { "type": "string" },
+        "scale": { "type": "number" },
+        "format": { "$ref": "#/$defs/format" },
+        "prefixKey": { "type": "string" },
+        "suffixKey": { "type": "string" },
+        "suffix_table": { "type": "string" },
+        "suffix_table_lookup": { "enum": ["exact", "ceil"] },
+        "suffixTableFormatKey": { "type": "string" },
+        "literalKey": { "type": "string" },
+        "valueTemplateKey": { "type": "string" },
+        "templateArgs": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "color_code": { "type": "string" },
+        "show_if_true": { "type": "boolean" },
+        "show_if_present": { "type": "boolean" },
+        "show_if": { "type": "string" },
+        "single": { "$ref": "#/$defs/voltageSegment" },
+        "split": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/voltageSegment" }
+        }
+      }
+    },
+    "voltageSegment": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "labelKey": { "type": ["string", "null"] },
+        "expr": { "type": "string" },
+        "valueKeyExpr": { "type": "string" },
+        "format": { "$ref": "#/$defs/format" },
+        "prefixKey": { "type": "string" },
+        "suffixKey": { "type": "string" },
+        "valueTemplateKey": { "type": "string" },
+        "templateArgs": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "format": {
+      "enum": [
+        "direct",
+        "as_string",
+        "comma_int",
+        "comma_long",
+        "comma_double_1",
+        "percent_int_x100",
+        "percent_double_x100",
+        "decimal_0",
+        "decimal_1",
+        "decimal_2",
+        "scientific",
+        "duration_seconds",
+        "duration_ticks",
+        "duration_auto_unit",
+        "java_double",
+        "bool_yes_no"
+      ]
+    }
+  }
+}

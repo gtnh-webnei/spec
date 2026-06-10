@@ -1,5 +1,6 @@
 {
-  "schema": "gregtech-display-spec",
+  "$schema": "./recipe-display.schema.json",
+  "schema": "recipe-display-spec",
   "version": 2,
   "tables": {
     "tier_name": {
@@ -4754,6 +4755,24 @@
         }
       ],
       "nameKey": "spec.gregtech.handler.gtpp_solartower.name"
+    },
+    "alchemy": {
+      "nameKey": "spec.bloodmagic.handler.alchemy.name",
+      "lines": [
+        {
+          "kind": "metadata",
+          "key": "lp_cost",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.alchemy.line.lp.label",
+          "suffixKey": "spec.bloodmagic.suffix.lp"
+        },
+        {
+          "kind": "metadata",
+          "key": "orb_level",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.alchemy.line.orbLevel.label"
+        }
+      ]
     }
   }
 }

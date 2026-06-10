@@ -44,7 +44,7 @@ current visible text, including text that is currently English.
 
 ```json
 {
-  "schema": "gregtech-display-spec",
+  "schema": "recipe-display-spec",
   "version": 2,
   "tables": {
     "table_name": {
@@ -64,7 +64,7 @@ current visible text, including text that is currently English.
 
 Fields:
 
-- `schema`: required. Must be exactly `gregtech-display-spec`.
+- `schema`: required. Must be exactly `recipe-display-spec`.
 - `version`: required. Must be `2`.
 - `tables`: required object. Shared lookup tables. Values are i18n keys.
 - `handlers`: required object. Keyed by GregTech handler short name.
@@ -565,38 +565,33 @@ also `zh_CN`.
 
 ## Validation
 
-Run after editing spec files:
+Structure is validated by the JSON Schema `spec/recipe-display.schema.json`, referenced from
+`display.json` via its `$schema` field. Editors (VS Code etc.) provide completion and inline
+validation automatically.
 
-```bash
-node tools/validate-display-spec-i18n.mjs
-```
+The schema checks:
 
-The validator checks:
+- `display.json` has `schema: "recipe-display-spec"` and `version: 2`.
+- every line has a valid `kind` and only known fields.
+- `format` values are from the known formatter set.
 
-- `display.json` has `schema: "gregtech-display-spec"`.
-- `display.json` has `version: 2`.
-- every referenced `spec.gregtech.*` key exists in `spec/i18n/zh_CN.json`.
-- `spec.gregtech.*` keys inside expression string literals also exist.
-- obvious CJK text is not left in `display.json`.
-- suspicious natural-language string literals inside `expr`, `show_if`, and
-  `valueKeyExpr` are reported unless whitelisted.
-
-The validator is intentionally conservative. If it flags a real formula or
-source-data enum, prefer adding a narrow whitelist entry rather than weakening
-the scan.
+i18n key existence (that every referenced `spec.<mod>.*` key exists in `spec/i18n/<locale>.json`)
+is not enforced by the schema; missing keys render as the key itself and log a `console.warn` at
+runtime, so bad keys surface during review.
 
 ## Maintenance Checklist
 
 When adding a new displayed field:
 
-1. Add a line to the correct handler in `spec/display.json`.
-2. Put every visible word in `spec/i18n/zh_CN.json`.
+1. Add a line to the correct handler in `spec/display.json` (the `$schema` ref gives completion).
+2. Put every visible word in `spec/i18n/<locale>.json` under the owning mod's namespace
+   (`spec.gregtech.*`, `spec.bloodmagic.*`, ...).
 3. Use `valueTemplateKey` for phrases or locale-dependent order.
 4. Use `expr` only for computation and source-data lookup.
-5. Add shared lookup text to `tables` plus `spec.gregtech.table.*` messages.
-6. Sync source files to `exports/gtnh/2.8.4/official/spec/...` if the dev
-   server should serve the edited version immediately.
-7. Run `node tools/validate-display-spec-i18n.mjs`.
+5. Add shared lookup text to `tables` plus `spec.<mod>.table.*` messages.
+6. `display.json` and `i18n/` are served directly from `exports/gtnh/2.8.4/official/spec/...`
+   (same files), so edits take effect immediately.
+
 
 Do not use `tools/build-display-spec.py` as the authority for v2 until it is
 explicitly updated for this schema.
