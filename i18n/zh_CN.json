@@ -2800,10 +2800,28 @@
               "label": "所需气血宝珠等级"
             }
           }
+        },
+        "altar": {
+          "name": "血之祭坛",
+          "line": {
+            "tier": {
+              "label": "祭坛等级"
+            },
+            "lp": {
+              "label": "LP 消耗"
+            },
+            "consumption": {
+              "label": "消耗速率"
+            },
+            "drain": {
+              "label": "流失速率"
+            }
+          }
         }
       },
       "suffix": {
-        "lp": " LP"
+        "lp": " LP",
+        "lpPerTick": " LP/t"
       }
     }
   }

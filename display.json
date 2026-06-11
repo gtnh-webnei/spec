@@ -4773,6 +4773,38 @@
           "labelKey": "spec.bloodmagic.handler.alchemy.line.orbLevel.label"
         }
       ]
+    },
+    "altar": {
+      "nameKey": "spec.bloodmagic.handler.altar.name",
+      "lines": [
+        {
+          "kind": "metadata",
+          "key": "min_tier",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.altar.line.tier.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "lp_cost",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.altar.line.lp.label",
+          "suffixKey": "spec.bloodmagic.suffix.lp"
+        },
+        {
+          "kind": "metadata",
+          "key": "consumption_rate",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.altar.line.consumption.label",
+          "suffixKey": "spec.bloodmagic.suffix.lpPerTick"
+        },
+        {
+          "kind": "metadata",
+          "key": "drain_rate",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.altar.line.drain.label",
+          "suffixKey": "spec.bloodmagic.suffix.lpPerTick"
+        }
+      ]
     }
   }
 }
