@@ -4883,7 +4883,8 @@
         {
           "kind": "metadata",
           "key": "reagent_effects",
-          "labelKey": null
+          "labelKey": null,
+          "preserveNewlines": true
         }
       ]
     }
