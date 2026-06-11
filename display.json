@@ -4822,7 +4822,8 @@
           "suffixKey": "spec.bloodmagic.suffix.lp"
         },
         {
-          "kind": "text",
+          "kind": "flag",
+          "key": "requires_reagent",
           "labelKey": "spec.bloodmagic.handler.bindingRitual.line.reagent.label",
           "literalKey": "spec.bloodmagic.handler.bindingRitual.line.reagent.none"
         }
