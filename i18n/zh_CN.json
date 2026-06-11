@@ -2837,10 +2837,10 @@
           "name": "炼金煅烧炉",
           "line": {
             "amount": {
-              "label": "数额"
+              "label": "试剂量"
             },
             "output": {
-              "label": "输出"
+              "label": "试剂名称"
             }
           }
         }
