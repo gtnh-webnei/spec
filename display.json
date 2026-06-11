@@ -4883,7 +4883,7 @@
         {
           "kind": "metadata",
           "key": "reagent_effects",
-          "labelKey": null,
+          "labelKey": "spec.bloodmagic.handler.meteor.line.reagentEffects.label",
           "preserveNewlines": true
         }
       ]
