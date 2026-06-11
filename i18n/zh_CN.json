@@ -2805,16 +2805,16 @@
           "name": "血之祭坛",
           "line": {
             "tier": {
-              "label": "祭坛等级"
+              "label": "层数"
             },
             "lp": {
-              "label": "LP 消耗"
+              "label": "LP"
             },
             "consumption": {
-              "label": "消耗速率"
+              "label": "使用"
             },
             "drain": {
-              "label": "流失速率"
+              "label": "消耗"
             }
           }
         },
@@ -2822,13 +2822,13 @@
           "name": "绑定仪式",
           "line": {
             "ritual": {
-              "label": "仪式"
+              "label": "仪式名称"
             },
             "activationCost": {
-              "label": "激活成本"
+              "label": "激活消耗"
             },
             "reagent": {
-              "label": "试剂",
+              "label": "试剂效果",
               "none": "无法向此仪式添加任何试剂"
             }
           }
