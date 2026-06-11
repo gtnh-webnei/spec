@@ -75,6 +75,17 @@
     }
   },
   "handlers": {
+    "betterquesting": {
+      "lines": [
+        {
+          "kind": "metadata",
+          "key": "quest_name",
+          "labelKey": "spec.quest.handler.betterquesting.line.quest.label",
+          "action": "open_quest",
+          "targetMetadataKey": "quest_id"
+        }
+      ]
+    },
     "tic_bolt_molding": {
       "recipe_kind": "PROCESSING",
       "recipe_count": 27367,

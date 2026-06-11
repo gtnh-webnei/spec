@@ -1,5 +1,17 @@
 {
   "spec": {
+    "quest": {
+      "handler": {
+        "betterquesting": {
+          "name": "BetterQuesting",
+          "line": {
+            "quest": {
+              "label": "任务"
+            }
+          }
+        }
+      }
+    },
     "gregtech": {
       "template": {
         "voltageWithTier": "{value} EU/t ({tier})",
