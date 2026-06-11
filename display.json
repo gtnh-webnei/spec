@@ -4805,6 +4805,28 @@
           "suffixKey": "spec.bloodmagic.suffix.lpPerTick"
         }
       ]
+    },
+    "binding_ritual": {
+      "nameKey": "spec.bloodmagic.handler.bindingRitual.name",
+      "lines": [
+        {
+          "kind": "metadata",
+          "key": "ritual_name",
+          "labelKey": "spec.bloodmagic.handler.bindingRitual.line.ritual.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "activation_cost",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.bindingRitual.line.activationCost.label",
+          "suffixKey": "spec.bloodmagic.suffix.lp"
+        },
+        {
+          "kind": "text",
+          "labelKey": "spec.bloodmagic.handler.bindingRitual.line.reagent.label",
+          "literalKey": "spec.bloodmagic.handler.bindingRitual.line.reagent.none"
+        }
+      ]
     }
   }
 }

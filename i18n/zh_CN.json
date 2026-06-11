@@ -2817,6 +2817,21 @@
               "label": "流失速率"
             }
           }
+        },
+        "bindingRitual": {
+          "name": "绑定仪式",
+          "line": {
+            "ritual": {
+              "label": "仪式"
+            },
+            "activationCost": {
+              "label": "激活成本"
+            },
+            "reagent": {
+              "label": "试剂",
+              "none": "无法向此仪式添加任何试剂"
+            }
+          }
         }
       },
       "suffix": {
