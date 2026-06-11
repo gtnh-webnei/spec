@@ -2832,11 +2832,29 @@
               "none": "无法向此仪式添加任何试剂"
             }
           }
+        },
+        "calcinator": {
+          "name": "炼金煅烧炉",
+          "line": {
+            "reagent": {
+              "label": "炼金试剂"
+            },
+            "amount": {
+              "label": "数额"
+            },
+            "lp": {
+              "label": "LP"
+            },
+            "lpPerTick": {
+              "label": "使用"
+            }
+          }
         }
       },
       "suffix": {
         "lp": " LP",
-        "lpPerTick": " LP/t"
+        "lpPerTick": " LP/t",
+        "ar": " AR"
       }
     }
   }

@@ -4827,6 +4827,37 @@
           "literalKey": "spec.bloodmagic.handler.bindingRitual.line.reagent.none"
         }
       ]
+    },
+    "calcinator": {
+      "nameKey": "spec.bloodmagic.handler.calcinator.name",
+      "lines": [
+        {
+          "kind": "metadata",
+          "key": "reagent_name",
+          "labelKey": "spec.bloodmagic.handler.calcinator.line.reagent.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "reagent_amount",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.calcinator.line.amount.label",
+          "suffixKey": "spec.bloodmagic.suffix.ar"
+        },
+        {
+          "kind": "metadata",
+          "key": "lp_cost",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.calcinator.line.lp.label",
+          "suffixKey": "spec.bloodmagic.suffix.lp"
+        },
+        {
+          "kind": "metadata",
+          "key": "lp_per_tick",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.calcinator.line.lpPerTick.label",
+          "suffixKey": "spec.bloodmagic.suffix.lpPerTick"
+        }
+      ]
     }
   }
 }
