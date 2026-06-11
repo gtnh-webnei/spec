@@ -86,6 +86,16 @@
         }
       ]
     },
+    "gtpp_decayables": {
+      "recipe_kind": "PROCESSING",
+      "lines": [
+        {
+          "kind": "duration",
+          "format": "duration_auto_unit",
+          "labelKey": "spec.gregtech.handler.gtpp_decayables.line.duration.label"
+        }
+      ]
+    },
     "tic_bolt_molding": {
       "recipe_kind": "PROCESSING",
       "recipe_count": 27367,

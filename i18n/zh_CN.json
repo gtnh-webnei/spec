@@ -74,6 +74,14 @@
         "disabled": "禁止使用"
       },
       "handler": {
+        "gtpp_decayables": {
+          "name": "可衰变",
+          "line": {
+            "duration": {
+              "label": "耗时"
+            }
+          }
+        },
         "tic_bolt_molding": {
           "name": "匠魂弩箭固化",
           "line": {
