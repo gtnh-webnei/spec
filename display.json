@@ -4844,6 +4844,47 @@
           "labelKey": "spec.bloodmagic.handler.calcinator.line.output.label"
         }
       ]
+    },
+    "meteor": {
+      "nameKey": "spec.bloodmagic.handler.meteor.name",
+      "lines": [
+        {
+          "kind": "metadata",
+          "key": "ritual_name",
+          "labelKey": "spec.bloodmagic.handler.meteor.line.ritual.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "activation_cost",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.meteor.line.activationCost.label",
+          "suffixKey": "spec.bloodmagic.suffix.lp"
+        },
+        {
+          "kind": "metadata",
+          "key": "meteor_cost",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.meteor.line.meteorCost.label",
+          "suffixKey": "spec.bloodmagic.suffix.lp"
+        },
+        {
+          "kind": "metadata",
+          "key": "radius",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.meteor.line.radius.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "diameter",
+          "format": "comma_int",
+          "labelKey": "spec.bloodmagic.handler.meteor.line.diameter.label"
+        },
+        {
+          "kind": "metadata",
+          "key": "reagent_effects",
+          "labelKey": "spec.bloodmagic.handler.meteor.line.reagentEffects.label"
+        }
+      ]
     }
   }
 }

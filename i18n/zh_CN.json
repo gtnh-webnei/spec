@@ -2843,6 +2843,29 @@
               "label": "试剂名称"
             }
           }
+        },
+        "meteor": {
+          "name": "陨星仪式",
+          "line": {
+            "ritual": {
+              "label": "仪式名称"
+            },
+            "activationCost": {
+              "label": "激活成本"
+            },
+            "meteorCost": {
+              "label": "消耗LP量"
+            },
+            "radius": {
+              "label": "半径"
+            },
+            "diameter": {
+              "label": "直径"
+            },
+            "reagentEffects": {
+              "label": "试剂效果"
+            }
+          }
         }
       },
       "suffix": {
