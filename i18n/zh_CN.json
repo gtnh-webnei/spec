@@ -55,10 +55,10 @@
         "duration": {
           "ticks": "{value} tick",
           "seconds": "{value} 秒",
-          "autoSeconds": "{value}秒",
-          "autoMinutes": "{value}分",
-          "autoHours": "{value}时",
-          "autoDays": "{value}天"
+          "autoSeconds": "{value} 秒",
+          "autoMinutes": "{value} 分",
+          "autoHours": "{value} 小时",
+          "autoDays": "{value} 天"
         },
         "bool": {
           "yes": "Yes",
